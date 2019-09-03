@@ -1,0 +1,52 @@
+{
+	"pages": [
+		{
+			"path": "pages/movie/movie",
+			"style": {
+				"navigationBarTitleText": "电影", //设置页面标题文字
+				"enablePullDownRefresh": true //开启下拉刷新
+			}
+		},
+		{
+			"path": "pages/cinema/cinema",
+			"style": {
+				"navigationBarTitleText": "影院"
+			}
+		},
+		{
+			"path": "pages/user/user",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#696969",
+		"selectedColor": "#e54847",
+		"list": [{
+				"pagePath": "pages/movie/movie",
+				"text": "电影",
+				"iconPath": "static/images/movie.png",
+				"selectedIconPath": "static/images/movieSelect.png"
+			},
+			{
+				"pagePath": "pages/cinema/cinema",
+				"text": "影院",
+				"iconPath": "static/images/cinema.png",
+				"selectedIconPath": "static/images/cinemaSelect.png"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"text": "我的",
+				"iconPath": "static/images/user.png",
+				"selectedIconPath": "static/images/userSelect.png"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
