@@ -55,16 +55,17 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wxb25bf08cc4537f2d",
         "setting" : {
             "urlCheck" : false,
             "minified" : true,
-            "es6" : true
+            "es6" : true,
+            "postcss" : true
         },
         "usingComponents" : true,
         "permission" : {
             "scope.userLocation" : {
-                "desc" : ""
+                "desc" : "授权位置"
             }
         }
     },

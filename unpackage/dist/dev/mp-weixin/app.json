@@ -2,14 +2,15 @@
   "pages": [
     "pages/movie/movie",
     "pages/cinema/cinema",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/city-select/city-select",
+    "pages/search-page/search-page"
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8"
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#e54847",
+    "backgroundColor": "#e54847"
   },
   "tabBar": {
     "color": "#696969",
@@ -37,7 +38,7 @@
   },
   "permission": {
     "scope.userLocation": {
-      "desc": ""
+      "desc": "授权位置"
     }
   },
   "usingComponents": {}

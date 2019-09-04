@@ -1,6 +1,6 @@
 <template>
 	<view>
-		
+		{{title}}
 	</view>
 </template>
 
@@ -8,7 +8,7 @@
 	export default {
 		data() {
 			return {
-				
+				title:'我的'
 			};
 		}
 	}

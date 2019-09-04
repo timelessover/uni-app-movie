@@ -1,8 +1,9 @@
-(global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],[
-/* 0 */
-/*!*******************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/movie-app/main.js ***!
-  \*******************************************************************/
+(global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],{
+
+/***/ 0:
+/*!************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22,7 +23,8 @@ createApp(app).$mount();
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"]))
 
 /***/ }),
-/* 1 */
+
+/***/ 1:
 /*!************************************************************!*\
   !*** ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js ***!
   \************************************************************/
@@ -753,7 +755,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1497,7 +1499,156 @@ var uni$1 = uni;var _default =
 uni$1;exports.default = _default;
 
 /***/ }),
-/* 2 */
+
+/***/ 10:
+/*!********************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+
+/***/ 11:
+/*!*********************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fmovie%2Fmovie"} ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _movie = _interopRequireDefault(__webpack_require__(/*! ./pages/movie/movie.vue */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_movie.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 17:
+/*!*********************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/utils/request.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var baseUrl = 'https://m.maoyan.com';
+
+var request = function request(url, params, method) {
+  return uni.request({
+    url: baseUrl + url,
+    data: params,
+    header: {},
+    method: method || 'GET' });
+
+};var _default =
+
+request;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 2:
 /*!******************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js ***!
   \******************************************************************************************/
@@ -6965,7 +7116,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -6986,14 +7137,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7069,7 +7220,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -7445,7 +7596,42 @@ internalMixin(Vue);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../webpack/buildin/global.js */ 3)))
 
 /***/ }),
-/* 3 */
+
+/***/ 20:
+/*!***********************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fcinema%2Fcinema"} ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _cinema = _interopRequireDefault(__webpack_require__(/*! ./pages/cinema/cinema.vue */ 21));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_cinema.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 26:
+/*!*******************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fuser%2Fuser"} ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _user = _interopRequireDefault(__webpack_require__(/*! ./pages/user/user.vue */ 27));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_user.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 3:
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
   \***********************************/
@@ -7475,132 +7661,11 @@ module.exports = g;
 
 
 /***/ }),
-/* 4 */
-/*!**********************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/movie-app/pages.json ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-/***/ }),
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */
-/*!********************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
-/* 11 */
-/*!****************************************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/movie-app/main.js?{"page":"pages%2Fmovie%2Fmovie"} ***!
-  \****************************************************************************************************/
+/***/ 32:
+/*!*********************************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fcity-select%2Fcity-select"} ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7608,20 +7673,16 @@ function normalizeComponent (
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _movie = _interopRequireDefault(__webpack_require__(/*! ./pages/movie/movie.vue */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_movie.default);
+var _citySelect = _interopRequireDefault(__webpack_require__(/*! ./pages/city-select/city-select.vue */ 33));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_citySelect.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */
-/*!******************************************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/movie-app/main.js?{"page":"pages%2Fcinema%2Fcinema"} ***!
-  \******************************************************************************************************/
+
+/***/ 38:
+/*!*********************************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fsearch-page%2Fsearch-page"} ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7629,31 +7690,36 @@ createPage(_movie.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _cinema = _interopRequireDefault(__webpack_require__(/*! ./pages/cinema/cinema.vue */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_cinema.default);
+var _searchPage = _interopRequireDefault(__webpack_require__(/*! ./pages/search-page/search-page.vue */ 39));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_searchPage.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
-/* 18 */,
-/* 19 */,
-/* 20 */,
-/* 21 */,
-/* 22 */,
-/* 23 */
-/*!**************************************************************************************************!*\
-  !*** C:/Users/admin/Documents/HBuilderProjects/movie-app/main.js?{"page":"pages%2Fuser%2Fuser"} ***!
-  \**************************************************************************************************/
+
+/***/ 4:
+/*!***************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/pages.json ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _user = _interopRequireDefault(__webpack_require__(/*! ./pages/user/user.vue */ 24));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_user.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 61:
+/*!**************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/static/libs/qqmap-wx-jssdk.min.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var _createClass = function () {function a(e, c) {for (var b = 0; b < c.length; b++) {var d = c[b];d.enumerable = d.enumerable || false;d.configurable = true;if ("value" in d) {d.writable = true;}Object.defineProperty(e, d.key, d);}}return function (d, b, c) {if (b) {a(d.prototype, b);}if (c) {a(d, c);}return d;};}();function _classCallCheck(a, b) {if (!(a instanceof b)) {throw new TypeError("Cannot call a class as a function");}}var ERROR_CONF = { KEY_ERR: 311, KEY_ERR_MSG: "key格式错误", PARAM_ERR: 310, PARAM_ERR_MSG: "请求参数信息有误", SYSTEM_ERR: 600, SYSTEM_ERR_MSG: "系统错误", WX_ERR_CODE: 1000, WX_OK_CODE: 200 };var BASE_URL = "https://apis.map.qq.com/ws/";var URL_SEARCH = BASE_URL + "place/v1/search";var URL_SUGGESTION = BASE_URL + "place/v1/suggestion";var URL_GET_GEOCODER = BASE_URL + "geocoder/v1/";var URL_CITY_LIST = BASE_URL + "district/v1/list";var URL_AREA_LIST = BASE_URL + "district/v1/getchildren";var URL_DISTANCE = BASE_URL + "distance/v1/";var Utils = { location2query: function location2query(c) {if (typeof c == "string") {return c;}var b = "";for (var a = 0; a < c.length; a++) {var e = c[a];if (!!b) {b += ";";}if (e.location) {b = b + e.location.lat + "," + e.location.lng;}if (e.latitude && e.longitude) {b = b + e.latitude + "," + e.longitude;}}return b;}, getWXLocation: function getWXLocation(c, b, a) {wx.getLocation({ type: "gcj02", success: c, fail: b, complete: a });}, getLocationParam: function getLocationParam(b) {if (typeof b == "string") {var a = b.split(",");if (a.length === 2) {b = { latitude: b.split(",")[0], longitude: b.split(",")[1] };} else {b = {};}}return b;}, polyfillParam: function polyfillParam(a) {a.success = a.success || function () {};a.fail = a.fail || function () {};a.complete = a.complete || function () {};}, checkParamKeyEmpty: function checkParamKeyEmpty(c, b) {if (!c[b]) {var a = this.buildErrorConfig(ERROR_CONF.PARAM_ERR, ERROR_CONF.PARAM_ERR_MSG + b + "参数格式有误");c.fail(a);c.complete(a);return true;}return false;}, checkKeyword: function checkKeyword(a) {return !this.checkParamKeyEmpty(a, "keyword");}, checkLocation: function checkLocation(c) {var a = this.getLocationParam(c.location);if (!a || !a.latitude || !a.longitude) {var b = this.buildErrorConfig(ERROR_CONF.PARAM_ERR, ERROR_CONF.PARAM_ERR_MSG + " location参数格式有误");c.fail(b);c.complete(b);return false;}return true;}, buildErrorConfig: function buildErrorConfig(a, b) {return { status: a, message: b };}, buildWxRequestConfig: function buildWxRequestConfig(c, a) {var b = this;a.header = { "content-type": "application/json" };a.method = "GET";a.success = function (d) {var e = d.data;if (e.status === 0) {c.success(e);} else {c.fail(e);}};a.fail = function (d) {d.statusCode = ERROR_CONF.WX_ERR_CODE;c.fail(b.buildErrorConfig(ERROR_CONF.WX_ERR_CODE, result.errMsg));};a.complete = function (d) {var e = +d.statusCode;switch (e) {case ERROR_CONF.WX_ERR_CODE:c.complete(b.buildErrorConfig(ERROR_CONF.WX_ERR_CODE, d.errMsg));break;case ERROR_CONF.WX_OK_CODE:var f = d.data;if (f.status === 0) {c.complete(f);} else {c.complete(b.buildErrorConfig(f.status, f.message));}break;default:c.complete(b.buildErrorConfig(ERROR_CONF.SYSTEM_ERR, ERROR_CONF.SYSTEM_ERR_MSG));}};return a;}, locationProcess: function locationProcess(f, e, c, a) {var d = this;c = c || function (g) {g.statusCode = ERROR_CONF.WX_ERR_CODE;f.fail(d.buildErrorConfig(ERROR_CONF.WX_ERR_CODE, g.errMsg));};a = a || function (g) {if (g.statusCode == ERROR_CONF.WX_ERR_CODE) {f.complete(d.buildErrorConfig(ERROR_CONF.WX_ERR_CODE, g.errMsg));}};if (!f.location) {d.getWXLocation(e, c, a);} else {if (d.checkLocation(f)) {var b = Utils.getLocationParam(f.location);e(b);}}} };var QQMapWX = function () {function b(i) {_classCallCheck(this, b);if (!i.key) {throw Error("key值不能为空");}this.key = i.key;}_createClass(b, [{ key: "search", value: function f(i) {var l = this;i = i || {};Utils.polyfillParam(i);if (!Utils.checkKeyword(i)) {return;}var k = { keyword: i.keyword, orderby: i.orderby || "_distance", page_size: i.page_size || 10, page_index: i.page_index || 1, output: "json", key: l.key };if (i.address_format) {k.address_format = i.address_format;}if (i.filter) {k.filter = i.filter;}var n = i.distance || "1000";var j = i.auto_extend || 1;var m = function m(o) {k.boundary = "nearby(" + o.latitude + "," + o.longitude + "," + n + "," + j + ")";wx.request(Utils.buildWxRequestConfig(i, { url: URL_SEARCH, data: k }));};Utils.locationProcess(i, m);} }, { key: "getSuggestion", value: function h(i) {var k = this;i = i || {};Utils.polyfillParam(i);if (!Utils.checkKeyword(i)) {return;}var j = { keyword: i.keyword, region: i.region || "全国", region_fix: i.region_fix || 0, policy: i.policy || 0, output: "json", key: k.key };wx.request(Utils.buildWxRequestConfig(i, { url: URL_SUGGESTION, data: j }));} }, { key: "reverseGeocoder", value: function a(i) {var k = this;i = i || {};Utils.polyfillParam(i);var j = { coord_type: i.coord_type || 5, get_poi: i.get_poi || 0, output: "json", key: k.key };if (i.poi_options) {j.poi_options = i.poi_options;}var l = function l(m) {j.location = m.latitude + "," + m.longitude;wx.request(Utils.buildWxRequestConfig(i, { url: URL_GET_GEOCODER, data: j }));};Utils.locationProcess(i, l);} }, { key: "geocoder", value: function g(i) {var k = this;i = i || {};Utils.polyfillParam(i);if (Utils.checkParamKeyEmpty(i, "address")) {return;}var j = { address: i.address, output: "json", key: k.key };wx.request(Utils.buildWxRequestConfig(i, { url: URL_GET_GEOCODER, data: j }));} }, { key: "getCityList", value: function c(i) {var k = this;i = i || {};Utils.polyfillParam(i);var j = { output: "json", key: k.key };
+      wx.request(Utils.buildWxRequestConfig(i, { url: URL_CITY_LIST, data: j }));} }, { key: "getDistrictByCityId", value: function d(i) {var k = this;i = i || {};Utils.polyfillParam(i);if (Utils.checkParamKeyEmpty(i, "id")) {return;}var j = { id: i.id || "", output: "json", key: k.key };wx.request(Utils.buildWxRequestConfig(i, { url: URL_AREA_LIST, data: j }));} }, { key: "calculateDistance", value: function e(i) {var k = this;i = i || {};Utils.polyfillParam(i);if (Utils.checkParamKeyEmpty(i, "to")) {return;}var j = { mode: i.mode || "walking", to: Utils.location2query(i.to), output: "json", key: k.key };var l = function l(m) {j.from = m.latitude + "," + m.longitude;wx.request(Utils.buildWxRequestConfig(i, { url: URL_DISTANCE, data: j }));};if (i.from) {i.location = i.from;}Utils.locationProcess(i, l);} }]);return b;}();module.exports = QQMapWX;
 
 /***/ })
-]]);
+
+}]);
 //# sourceMappingURL=../../.sourcemap/mp-weixin/common/vendor.js.map

@@ -6,11 +6,12 @@
   "setting": {
     "urlCheck": false,
     "minified": true,
-    "es6": true
+    "es6": true,
+    "postcss": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.7.0",
-  "appid": "touristappid",
+  "appid": "wxb25bf08cc4537f2d",
   "projectname": "movie-app",
   "condition": {
     "search": {

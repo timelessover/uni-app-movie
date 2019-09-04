@@ -1,6 +1,6 @@
 <template>
 	<view>
-		
+		{{title}}
 	</view>
 </template>
 
@@ -8,8 +8,16 @@
 	export default {
 		data() {
 			return {
+				title: '影院'
 				
 			};
+		},
+		onLoad(){
+			uni.getLocation({
+				success(e) {
+					console.log(e)
+				}
+			})
 		}
 	}
 </script>
