@@ -1,5 +1,9 @@
 <script>
 	const QQMapWX = require('./static/libs/qqmap-wx-jssdk.min.js');
+	import {
+	  mapState,
+	  mapMutations
+	 } from 'vuex';
 	let qqmapsdk;
 	qqmapsdk = new QQMapWX({
 		key: 'MH2BZ-4WTK3-2D63K-YZRHP-HM537-HHBD3'
@@ -42,19 +46,17 @@
 									cityName: cityFullname.substring(0, cityFullname.length - 1),
 									status: 1
 								}
-								this.$mp.app.globalData.userLocation = { ...cityInfo
-								}
-								this.$mp.app.globalData.selectCity = { ...cityInfo
-								}
-								console.log(this.$mp.app.globalData)
+								this.$store.commit('userLocation',{ ...cityInfo
+								})
+								this.$store.commit('selectCity',{ ...cityInfo
+								})
 							}
 						})
-
 					},
 					fail: () => {
-						this.$mp.app.globalData.userLocation = {
+						this.$store.commit('userLocation',{
 							status: 0
-						}
+						})
 					}
 				})
 			}
@@ -64,10 +66,6 @@
 		},
 		onHide: function() {
 			console.log('App Hide')
-		},
-		globalData: {
-			userLocation: null, //用户的位置信息
-			selectCity: null //用户切换的城市
 		}
 	}
 </script>

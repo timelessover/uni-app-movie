@@ -10,44 +10,37 @@
 					{{item.title}}
 				</view>
 			</view>
-			<navigator class='search-entry' url='../../subPages/search-page/search-page?stype=-1'>
+			<navigator class='search-entry' url='/pages/search-page/search-page?stype=-1'>
 				<text class='iconfont icon-sousuo'></text>
 			</navigator>
 		</view>
-		<!--  头部轮播 -->
-		<swiper :indicator-dots="false" :autoplay="false" :interval="3000" :duration="1000">
-			<swiper-item v-for="(item,index) in imgList" :key="index">
-				<view class="swiper-item">{{item.img}}</view>
-			</swiper-item>
-		</swiper>
-		<!-- 列表 -->
+		<!-- tab1列表 -->
 		<view class='switch-content'>
-			<view v-show="switchItem === 1">
-				<block v-for="(item,index) in dataList" :key="index">
+			<view v-show="switchItem === 0">
+				<block v-for="(item,index) in movieList0" :key="index">
 					<movie-section :movie='item'></movie-section>
 				</block>
 				<view v-if='!loadComplete0 && movieList0.length'>
 					<loadingMore></loadingMore>
 				</view>
 			</view>
-			<view v-show="switchItem===0">
+			<!-- tab2列表 -->
+			<view v-show="switchItem===1">
 				<view class='most-expected' v-if='mostExpectedList.length'>
 					<view class='title'>近期最受期待</view>
 					<scroll-view class='scroll-view_H' scroll-x bindscrolltolower='lower'>
-						<navigator url=`/pages/subPages/movie-detail/movie-detail?movieId=${movie.id}` v-for="(movie,index) in mostExpectedList"
-						 :key='movie.id' class='expected-item'>
-							<image :src='movie.img' class='poster'></image>
-							<view class='name line-ellipsis'>{{movie.nm}}</view>
-							<view class='data line-ellipsis'>{{movie.wish}}人想看</view>
-							<view class='data'>{{movie.comingTitle}}</view>
-						</navigator>
+						<block v-for="(movie,index) in mostExpectedList" :key='movie.id'>
+							<navigator :url="movie.url" class='expected-item'>
+								<image :src='movie.img' class='poster'></image>
+								<view class='name line-ellipsis'>{{movie.nm}}</view>
+								<view class='data line-ellipsis'>{{movie.wish}}人想看</view>
+								<view class='data'>{{movie.comingTitle}}</view>
+							</navigator>
+						</block>
+
 					</scroll-view>
 				</view>
 				<block v-for='(movie,index) in movieList1' :key='movie.id'>
-					<block v-if='index===0||movieList1[index-1].comingTitle!==movie.comingTitle'>
-						<view class='title'>{{movie.comingTitle}}</view>
-						<movie-section :movie='movie' rt=true></movie-section>
-					</block>
 					<movie-section :movie='movie' rt=true></movie-section>
 				</block>
 				<view v-if='!loadComplete1 && movieList1.length'>
@@ -55,70 +48,81 @@
 				</view>
 			</view>
 		</view>
-
 	</view>
 </template>
 
 <script>
-	import movieSection from '../../components/movieSection.vue';
-	import loadingMore from '../../components/loadingMore.vue'
-	import request from '../../utils/request.js'
+	import movieSection from '@/components/movieSection.vue';
+	import loadingMore from '@/components/loadingMore.vue'
+	import request from '@/utils/request.js'
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex';
 	const app = getApp()
 	export default {
 		components: {
 			movieSection,
-			loadingMore
+			loadingMore,
 		},
 		data() {
 			return {
 				tabList: [{
-						title: '正在热映'
+						title: '热映'
 					},
 					{
-						title: '即将上映'
+						title: '待映'
 					}
 				],
 				switchItem: 0,
-				dataList: [],
-				city: '正在定位...',
+				// city: '正在定位...',
 				switchItem: 0, //默认选择‘正在热映’
-				//‘正在热映’数据
+				//‘热映’数据
 				movieList0: [],
 				movieIds0: [],
 				loadComplete0: false, //‘正在上映’数据是否加载到最后一条
-				//‘即将上映’数据
+				//‘待映’数据
 				mostExpectedList: [],
 				movieList1: [],
 				movieIds1: [],
 				loadComplete1: false,
-				loadComplete2: false //水平滚动加载的数据是否加载完毕
+				loadComplete2: false, //水平滚动加载的数据是否加载完毕
 			};
 		},
 		computed: {
-			url() {
-				return '/pages/test/test'
+			city() {
+				if (!this.$store.state.selectCity) {
+					return '正在定位'
+				} else {
+					return this.$store.state.selectCity.cityName
+				}
 			}
 		},
 		methods: {
 			selectItem(index) {
-				const that = this
 				this.switchItem = index
 				if (index === 1 && !this.mostExpectedList.length) {
 					uni.showLoading({
 						title: '正在加载...'
 					})
-
-					request('/ajax/movieOnInfoList?token=').then(res => {
-						uni.hideLoading()
-						this.mostExpectedList = this.formatImgUrl(res[1].data.coming, true)
-					})
-
-					request('/ajax/comingList?token=&limit=10').then(res => {
-						uni.hideLoading()
-						that.movieIds1 = res[1].data.movieIds
-						that.movieList1 = this.formatImgUrl(res.data.coming)
-					})
+					this.getComing()
 				}
+			},
+			getComing() {
+				request('/ajax/mostExpected?limit=10&offset=0&token=').then(res => {
+					uni.hideLoading()
+					let mostExpectedList = this.formatImgUrl(res[1].data.coming, true)
+					mostExpectedList.forEach((item) => {
+						item.url = `/pages/movie-detail/movie-detail?movieId=${item.id}`
+					})
+					this.mostExpectedList = mostExpectedList
+				})
+
+				request('/ajax/comingList?token=&limit=10').then(res => {
+					uni.hideLoading()
+					this.movieIds1 = res[1].data.movieIds
+					this.movieList1 = this.formatImgUrl(res[1].data.coming)
+				})
 			},
 			//处理图片url
 			formatImgUrl(arr, cutTitle = false) {
@@ -140,28 +144,17 @@
 				return newArr
 			},
 			initPage() {
-				if (app.globalData.userLocation) {
-						this.city =  app.globalData.selectCity ? app.globalData.selectCity.cityName : '定位失败'
-				} else {
-					const timer = setInterval(()=>{
-						if(this.city !== '定位失败'){
-							this.city = app.globalData.selectCity.cityName
-							clearInterval(timer)
-						}
-					},1500)
-				}
 				this.firstLoad()
 			},
 			//第一次加载页面时请求‘正在热映的数据’
 			firstLoad() {
-				const that = this
 				uni.showLoading({
 					title: '正在加载...'
 				})
 				request('/ajax/movieOnInfoList?token=').then(res => {
-					const movieList0 = that.formatImgUrl(res[1].data.movieList)
+					this.movieList0 = this.formatImgUrl(res[1].data.movieList)
 					uni.hideLoading()
-					that.movieIds0 = res[1].data.movieIds
+					this.movieIds0 = res[1].data.movieIds
 					if (res[1].data.movieList.length >= res[1].data.movieIds.length) {
 						this.loadComplete0 = true
 					}
@@ -169,7 +162,6 @@
 			},
 			//上拉触底刷新的加载函数
 			ReachBottom(list, ids, complete, item) {
-				const that = this
 				if (complete) {
 					return
 				}
@@ -178,9 +170,9 @@
 					this[`loadComplete${item}`] = true
 				}
 				let query = ids.slice(length, length + 10).join('%2C')
-				request(`ajax/moreComingList?token=&movieIds=${query}`).then(res => {
-					const arr = list.concat(that.formatImgUrl(res.data.coming))
-					this[`movieList${item}`] = arr
+				request(`/ajax/moreComingList?token=&movieIds=${query}`).then(res => {
+					const arr = this.formatImgUrl(res[1].data.coming)
+					this[`movieList${item}`] = [...list, ...arr]
 				})
 			},
 			//滚动到最右边时的事件处理函数
@@ -190,23 +182,17 @@
 					loadComplete2
 				} = this
 				const length = mostExpectedList.length
-				const that = this
 				if (loadComplete2) {
 					return
 				}
 				request(`/ajax/mostExpected?limit=10&offset=${length}&token=`).then(res => {
-					that.tmostExpectedList =  mostExpectedList.concat(that.formatImgUrl(res.data.coming, true))
-				    that.loadComplete2 =  !res.data.paging.hasMore || !res.data.coming.length //当返回的数组长度为0时也认为数据请求完毕
+					this.tmostExpectedList = mostExpectedList.concat(this.formatImgUrl(res[1].data.coming, true))
+					this.loadComplete2 = !res.data.paging.hasMore || !res[1].data.coming.length //当返回的数组长度为0时也认为数据请求完毕
 				})
 			},
 		},
 		onLoad() {
 			this.initPage()
-		},
-		onShow() {
-			if (app.globalData.selectCity) {
-				this.city =  app.globalData.selectCity.cityName
-			}
 		},
 		//上拉触底刷新
 		onReachBottom() {
@@ -229,7 +215,7 @@
 		onShareAppMessage(res) {
 			return {
 				title: '快来看看附近的电影院',
-				path: 'pages/tabBar/movie/movie'
+				path: 'pages/movie/movie'
 			}
 		}
 	}
@@ -246,7 +232,7 @@
 	.hot-item {
 		font-size: 30rpx;
 		color: #666;
-		width: 21.33333vw;
+		width: 15vw;
 		text-align: center;
 		margin: 0 24rpx;
 		font-weight: 700;

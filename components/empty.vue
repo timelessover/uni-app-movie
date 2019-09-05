@@ -1,6 +1,6 @@
 <template>
 	<view class='empty'>
-		<image src='/assets/images/empty.png' class='empty-img'></image>
+		<image src='/static/images/nothing.png' class='empty-img'></image>
 		<view class='empty-text'>{{message}}</view>
 	</view>
 </template>

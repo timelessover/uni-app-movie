@@ -28,6 +28,58 @@
             "path" : "pages/search-page/search-page",
             "style" : {}
         }
+        ,{
+            "path" : "pages/movie-detail/movie-detail",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/video-page/video-page",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/about-page/about-page",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/buy-snack/buy-snack",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/buy-ticket/buy-ticket",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/cinema-detail/cinema-detail",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/cinema-map/cinema-map",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/comment-page/comment-page",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/movie-order/movie-order",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/movie-order-detail/movie-order-detail",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/select-cinema/select-cinema",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/snack-order/snack-order",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/snack-page/snack-page",
+            "style" : {}
+        }
     ],
 	"tabBar": {
 		"color": "#696969",

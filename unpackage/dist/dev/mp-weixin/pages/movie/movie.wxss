@@ -36,7 +36,7 @@
 .hot-item {
   font-size: 30rpx;
   color: #666;
-  width: 21.33333vw;
+  width: 15vw;
   text-align: center;
   margin: 0 24rpx;
   font-weight: 700;

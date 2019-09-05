@@ -1,6 +1,6 @@
 <template>
   <view class='loading-more'>
-    <image src='/assets/images/loading.gif' class='loading-img'></image>
+    <image src='/static/images/loading.gif' class='loading-img'></image>
     <view class='loading-text'>正在加载...</view>
   </view>
 </template>

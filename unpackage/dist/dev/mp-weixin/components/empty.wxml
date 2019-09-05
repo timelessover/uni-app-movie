@@ -1,0 +1,1 @@
+<view class="empty"><image class="empty-img" src="/static/images/nothing.png"></image><view class="empty-text">{{message}}</view></view>

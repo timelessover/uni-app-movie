@@ -4,7 +4,20 @@
     "pages/cinema/cinema",
     "pages/user/user",
     "pages/city-select/city-select",
-    "pages/search-page/search-page"
+    "pages/search-page/search-page",
+    "pages/movie-detail/movie-detail",
+    "pages/video-page/video-page",
+    "pages/about-page/about-page",
+    "pages/buy-snack/buy-snack",
+    "pages/buy-ticket/buy-ticket",
+    "pages/cinema-detail/cinema-detail",
+    "pages/cinema-map/cinema-map",
+    "pages/comment-page/comment-page",
+    "pages/movie-order/movie-order",
+    "pages/movie-order-detail/movie-order-detail",
+    "pages/select-cinema/select-cinema",
+    "pages/snack-order/snack-order",
+    "pages/snack-page/snack-page"
   ],
   "subPackages": [],
   "window": {

@@ -36,7 +36,7 @@
 		},
 		computed:{
 			url(){
-				return '/pages/subPages/movie-detail/movie-detail?movieId=' + this.movie.id
+				return '/pages/movie-detail/movie-detail?movieId=' + this.movie.id
 			}
 		}
 	}
