@@ -8,9 +8,9 @@
 			<navigator url='../../search-page/search-page?stype=2' class='search-input'>
 				<text class='iconfont icon-sousuo'></text>搜影院</navigator>
 		</view>
-		<!-- <view class='nav-wrapper'>
-	    <filter-nav :city-cinema-info='cityCinemaInfo' @change='changeCondition' @toggleShow='toggleShow'></filter-nav>
-	  </view> -->
+		<view class='nav-wrapper'>
+	    <filter-nav :city-cinema-info='cityCinemaInfo' @change='changeCondition' @toggleShow='toggleShow'/>
+		</view>
 		<view class='cinema-list'>
 			<block v-for="(cinema,index) in cinemas" :key="cinema.id">
 				<cinemaSection :cinema="cinema"></cinemaSection>
@@ -28,7 +28,7 @@
 <script>
 	import cinemaSection from '@/components/cinemaSection.vue'
 	import empty from '@/components/empty.vue'
-	// import filterNav from '@/components/filter-nav.vue'
+	import filterNav from '@/components/filter-nav.vue'
 	import request from '@/utils/request.js'
 	import loadingMore from '@/components/loadingMore.vue'
 	import util from '@/utils/util.js'
@@ -37,7 +37,7 @@
 		components: {
 			cinemaSection,
 			empty,
-			// filterNav
+			filterNav
 		},
 		data() {
 			return {
@@ -98,14 +98,13 @@
 				return request('/ajax/cinemaList', params)
 			},
 			// 当过滤条件变化时调用的函数
-			changeCondition(e) {
-				console.log(e)
-				const obj = e.
+			changeCondition(obj) {
+				console.log(obj)
 				uni.showLoading({
 					title: '正在加载...'
 				})
 				this.params = {
-					...this.data.params,
+					...this.params,
 					...obj
 				}
 				this.cinemas = []
@@ -148,5 +147,52 @@
 </script>
 
 <style lang="scss">
-
+	.topbar {
+	  position: fixed;
+	  width: 100vw;
+	  top: 0;
+	  height: 90rpx;
+	  border: none;
+	  background-color: #f5f5f5;
+	}
+	
+	.search-input {
+	  flex-grow: 1;
+	  height: 56rpx;
+	  font-size: 26rpx;
+	  color: #999;
+	  border: 1rpx solid #e6e6e6;
+	  border-radius: 10rpx;
+	  margin: 0 30rpx;
+	  background: #fff;
+	  line-height: 56rpx;
+	  text-align: center;
+	}
+	
+	.icon-sousuo {
+	  display: inline-block;
+	  margin-right: 10rpx;
+	  font-size: 24rpx;
+	  color: #999;
+	}
+	
+	.nav-wrapper {
+	  position: fixed;
+	  z-index: 10;
+	  top: 90rpx;
+	  left: 0;
+	  width: 100vw;
+	  height: 80rpx;
+	  background: #fff;
+	}
+	
+	.cinema-list {
+	  margin-top: 170rpx;
+	}
+	
+	::-webkit-scrollbar {
+	  width: 0;
+	  height: 0;
+	  color: transparent;
+	}
 </style>

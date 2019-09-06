@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<view class='topbar'>
-			<navigator class='city-entry' url='../../subPages/city-select/city-select'>
+			<navigator class='city-entry' url='/pages/city-select/city-select'>
 				<text class='city-name'>{{city}}</text>
 				<text class='city-entry-arrow'></text>
 			</navigator>

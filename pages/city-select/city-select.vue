@@ -1,10 +1,9 @@
 <template>
-	<view>
-		city-select
-	</view>
+
 </template>
 
 <script>
+	import empty from '@/components/empty.vue'
 	export default {
 		data() {
 			return {

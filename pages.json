@@ -1,19 +1,20 @@
 {
 	"pages": [
 		{
-			"path": "pages/movie/movie",
-			"style": {
-				"navigationBarTitleText": "电影", //设置页面标题文字
-				"enablePullDownRefresh": true //开启下拉刷新
-			}
-		},
-		{
 			"path": "pages/cinema/cinema",
 			"style": {
 				"navigationBarTitleText": "影院",
 				"enablePullDownRefresh": true //开启下拉刷新
 			}
 		},
+		{
+			"path": "pages/movie/movie",
+			"style": {
+				"navigationBarTitleText": "电影", //设置页面标题文字
+				"enablePullDownRefresh": true //开启下拉刷新
+			}
+		},
+		
 		{
 			"path": "pages/user/user",
 			"style": {

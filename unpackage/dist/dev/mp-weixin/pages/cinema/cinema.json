@@ -3,6 +3,7 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "cinema-section": "/components/cinemaSection",
-    "empty": "/components/empty"
+    "empty": "/components/empty",
+    "filter-nav": "/components/filter-nav"
   }
 }

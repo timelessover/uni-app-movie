@@ -1,9 +1,9 @@
 <script>
 	const QQMapWX = require('./static/libs/qqmap-wx-jssdk.min.js');
 	import {
-	  mapState,
-	  mapMutations
-	 } from 'vuex';
+		mapState,
+		mapMutations
+	} from 'vuex';
 	let qqmapsdk;
 	qqmapsdk = new QQMapWX({
 		key: 'MH2BZ-4WTK3-2D63K-YZRHP-HM537-HHBD3'
@@ -46,15 +46,15 @@
 									cityName: cityFullname.substring(0, cityFullname.length - 1),
 									status: 1
 								}
-								this.$store.commit('userLocation',{ ...cityInfo
+								this.$store.commit('userLocation', { ...cityInfo
 								})
-								this.$store.commit('selectCity',{ ...cityInfo
+								this.$store.commit('selectCity', { ...cityInfo
 								})
 							}
 						})
 					},
 					fail: () => {
-						this.$store.commit('userLocation',{
+						this.$store.commit('userLocation', {
 							status: 0
 						})
 					}
