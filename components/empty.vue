@@ -6,6 +6,14 @@
 </template>
 
 <script>
+	export default{
+		name:'empty',
+		props:{
+			message:{
+				type: String
+			}
+		}
+	}
 </script>
 
 <style lang="scss">

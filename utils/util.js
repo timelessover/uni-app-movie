@@ -1,4 +1,4 @@
-const formatTime = date => {
+export const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
@@ -9,17 +9,17 @@ const formatTime = date => {
   return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
-const formatNumber = n => {
+export const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
 
-const getToday = () => {
+export const getToday = () => {
   const today = new Date()
   return formatTime(new Date()).split(' ')[0]
 }
 
-const calcTime = (time) => {
+export const calcTime = (time) => {
   if(!time){
     return
   }
@@ -47,7 +47,7 @@ const calcTime = (time) => {
 }
 
 //获取指定区间的随机整数
-const getRandom = (lowerValue, upperValue,isFormat)=>{
+export const getRandom = (lowerValue, upperValue,isFormat)=>{
   const num = Math.floor(Math.random() * (upperValue - lowerValue + 1) + lowerValue);
   if (isFormat){
     return formatNumber(num);
@@ -56,7 +56,7 @@ const getRandom = (lowerValue, upperValue,isFormat)=>{
   }
 }
 //节流函数
-const throttle = (func, interval=250)=> {
+export const throttle = (func, interval=250)=> {
   let timeout;
   let startTime = new Date();
   return function (event) {
@@ -73,13 +73,4 @@ const throttle = (func, interval=250)=> {
       func.call(this, event);
     }
   }
-}
-
-module.exports = {
-  formatTime: formatTime,
-  formatNumber: formatNumber,
-  getToday,
-  calcTime,
-  getRandom,
-  throttle
 }

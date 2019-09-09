@@ -75,7 +75,6 @@
 					}
 				],
 				switchItem: 0,
-				// city: '正在定位...',
 				switchItem: 0, //默认选择‘正在热映’
 				//‘热映’数据
 				movieList0: [],
@@ -94,7 +93,7 @@
 				if (!this.$store.state.selectCity) {
 					return '正在定位'
 				} else {
-					return this.$store.state.selectCity.cityName
+					return this.$store.state.selectCity.cityName || city_name
 				}
 			}
 		},

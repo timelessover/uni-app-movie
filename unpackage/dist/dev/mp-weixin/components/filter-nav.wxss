@@ -266,7 +266,7 @@
   border: 1px solid #f03d37;
   color: #fff;
 }
-/* 蒙板 */
+/* 遮罩层 */
 .mask {
   position: fixed;
   z-index: -1;

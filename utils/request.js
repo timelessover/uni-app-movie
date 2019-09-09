@@ -6,7 +6,7 @@ const request = (url, params, method) => {
 		data: params,
 		header: {},
 		method:method || 'GET',
-	});
+	})
 }
 
 export default request

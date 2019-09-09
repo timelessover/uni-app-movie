@@ -15,54 +15,60 @@
 			</view>
 		</view>
 		<view class='nav-content'>
-		    <view class='nav-content-item region' v-show = 'itemNum===1'>
-		      <view class='tab'>
-		        <view :class="['nav-item',selectRegion.item===0 ?'active':'']" @click = 'selectRegionItem(0)'>商区</view>
-		        <view :class="['nav-item',selectRegion.item===1 ?'active':'']" @click ='selectRegionItem(1)' >地铁站</view>
-		      </view>
-		      <view class='region-list'>
-		        <scroll-view class='region-sidenav' scroll-y>
-		          <view v-for='(item,index) in selectRegion.sideList' :key='item.id' :class="['line-ellipsis','side-item',selectRegion.item===0?(item.id===selectRegion.selectDistrictId?'active':''):(item.id===selectRegion.selectLineId?'active':'')]" @click='regionSideClick(item)'>{{item.name}}({{item.count}})</view>
-		        </scroll-view>
-		       <scroll-view class='region-list-item' scroll-y>
-		         <view v-for='(item,index) in selectRegion.list' :key='item.id' :class="['item',selectRegion.item===0?(item.id===selectRegion.selectAreaId?'red':''):(item.id===selectRegion.selectStationId?'red':'')]" @click='regionListClick(item)' >
-		           <view>
-		              <text class='iconfont icon-hook' :style="{'visibility':selectRegion.item===0?(item.id===selectRegion.selectAreaId?'':'hidden'):(item.id===selectRegion.selectStationId?'':'hidden')}"></text> {{item.name}}
-		            </view>
-		            <view>{{item.count}}</view>
-		          </view>
-		        </scroll-view>
-		      </view>
-		    </view>
+			<view class='nav-content-item region' v-show='itemNum===1'>
+				<view class='tab'>
+					<view :class="['nav-item',selectRegion.item===0 ?'active':'']" @click='selectRegionItem(0)'>商区</view>
+					<view :class="['nav-item',selectRegion.item===1 ?'active':'']" @click='selectRegionItem(1)'>地铁站</view>
+				</view>
+				<view class='region-list'>
+					<scroll-view class='region-sidenav' scroll-y>
+						<view v-for='(item,index) in selectRegion.sideList' :key='item.id' :class="['line-ellipsis','side-item',selectRegion.item === 0?(item.id===selectRegion.selectDistrictId?'active':''):(item.id===selectRegion.selectLineId?'active':'')]"
+						 @click='regionSideClick(item)'>{{item.name}}({{item.count}})</view>
+					</scroll-view>
+					<scroll-view class='region-list-item' scroll-y>
+						<view v-for='(item,index) in selectRegion.list' :key='item.id' :class="['item',selectRegion.item===0?(item.id===selectRegion.selectAreaId?'red':''):(item.id===selectRegion.selectStationId?'red':'')]"
+						 @click='regionListClick(item)'>
+							<view>
+								<text class='iconfont icon-hook' :style="{'visibility':selectRegion.item===0?(item.id===selectRegion.selectAreaId?'':'hidden'):(item.id===selectRegion.selectStationId?'':'hidden')}"></text>
+								{{item.name}}
+							</view>
+							<view>{{item.count}}</view>
+						</view>
+					</scroll-view>
+				</view>
+			</view>
 			<!-- 品牌列表 -->
-		   <view class='nav-content-item brand' v-show="itemNum===2">
-		      <scroll-view class='brand-scroll-view' scroll-y>
-		        <view v-for='(item,index) in cityCinemaInfo.brand.subItems' :key='item.id' :class="['brand-item',selectBrandId===item.id?'red':'']" @click='selectBrand(item)'>
-		          <view>
-		            <text class='iconfont icon-hook'></text> {{item.name}}
-		          </view>
-		          <view class='brand-count'>{{item.count}}</view>
-		        </view>
-		      </scroll-view>
-		    </view>
-		   <view class='nav-content-item special' v-show = 'itemNum === 3'>
-		      <scroll-view class='special-scroll-view' scroll-y>
-		        <view class='item-title'>特色功能</view>
-		       <view class='item-list'>
-		          <view v-for='(item,index) in cityCinemaInfo.service.subItems' :key='item.id' :class="['btn','line-ellipsis',selectServiceId===item.id?'select':'']"  @click="specialSelectItem(item.id,'service')">{{item.name}}</view>
-		        </view>
-		        <view class='item-title'>特殊厅</view>
-		       <view class='item-list'>
-		          <view v-for='(item,index) in cityCinemaInfo.hallType.subItems' :key='item.id' :class="['btn','line-ellipsis',selectServiceId===item.id?'select':'']"  @click="specialSelectItem(item.id,'hallType')">{{item.name}}</view>
-		        </view>
-		      </scroll-view>
-		      <view class='special-btn'>
-		        <view class='btn' @click='specialReset'>重置</view>
-		        <view class='btn confirm-btn' @click='specialConfirm'>确定</view>
-		      </view>
-		    </view>
-			  <view class='mask' @click.stop='cancal' v-show="itemNum !== -1" ></view>
-		  </view>
+			<view class='nav-content-item brand' v-show="itemNum===2">
+				<scroll-view class='brand-scroll-view' scroll-y>
+					<view v-for='(item,index) in cityCinemaInfo.brand.subItems' :key='item.id' :class="['brand-item',selectBrandId===item.id?'red':'']"
+					 @click='selectBrand(item)'>
+						<view>
+							<text class='iconfont icon-hook'></text> {{item.name}}
+						</view>
+						<view class='brand-count'>{{item.count}}</view>
+					</view>
+				</scroll-view>
+			</view>
+			<view class='nav-content-item special' v-show='itemNum === 3'>
+				<scroll-view class='special-scroll-view' scroll-y>
+					<view class='item-title'>特色功能</view>
+					<view class='item-list'>
+						<view v-for='(item,index) in cityCinemaInfo.service.subItems' :key='item.id' :class="['btn','line-ellipsis',selectServiceId===item.id?'select':'']"
+						 @click="specialSelectItem(item.id,'service')">{{item.name}}</view>
+					</view>
+					<view class='item-title'>特殊厅</view>
+					<view class='item-list'>
+						<view v-for='(item,index) in cityCinemaInfo.hallType.subItems' :key='item.id' :class="['btn','line-ellipsis',selectHallTypeId===item.id?'select':'']"
+						 @click="specialSelectItem(item.id,'hallType')">{{item.name}}</view>
+					</view>
+				</scroll-view>
+				<view class='special-btn'>
+					<view class='btn' @click='specialReset'>重置</view>
+					<view class='btn confirm-btn' @click='specialConfirm'>确定</view>
+				</view>
+			</view>
+			<view class='mask' @click.stop='cancal' v-show="itemNum !== -1"></view>
+		</view>
 	</view>
 </template>
 
@@ -99,19 +105,19 @@
 				}
 			}
 		},
-		computed: {
-
-		},
 		methods: {
 			selectItemNum(index) {
-				console.log(this.cityCinemaInfo)
 				if (this.itemNum === index) {
 					this.itemNum = -1
 				} else {
 					this.itemNum = index
 				}
+				// 出现全城列表
+				if(index===1){
+					this.selectRegionItem(0) 
+				}
 			},
-			//蒙板的点击事件
+			//遮罩层的点击事件
 			cancal() {
 				this.itemNum = -1
 			},
@@ -121,7 +127,7 @@
 					brandName = '品牌'
 				}
 				this.$emit('change', {
-				  brandId: brand.id
+					brandId: brand.id
 				})
 				this.selectBrandId = brand.id
 				this.itemName2 = brandName
@@ -133,10 +139,9 @@
 				this.selectHallTypeId = -1
 			},
 			//特色选择按钮
-			specialSelectItem(typeId,type) {
+			specialSelectItem(typeId, type) {
 				if (type === 'service') {
 					this.selectServiceId = typeId
-
 				} else {
 					this.selectHallTypeId = typeId
 				}
@@ -153,81 +158,83 @@
 				})
 				this.itemNum = -1
 			},
-			 //“全城”的side的点击事件
-			  regionSideClick(side) {
-			      const {
-			        item,
-			        selectDistrictId,
-			        selectLineId,
-			        selectStationId,
-			        selectAreaId
-			      } = this.selectRegion
-			      let obj = { ...this.selectRegion,
-			        list: side.subItems ? side.subItems : []
-			      }
-			      if (item === 0) {
-			        //点击“全部”时关闭下拉框
-			        if (side.id === -1 && selectDistrictId !== -1) {
-			          this.$emit('change', {
-			            districtId: -1,
-			            lineId: selectLineId,
-			            areaId: -1,
-			            stationId: selectStationId
-			          })
-					  this.itemNum = -1
-					  this.itemName1 = '全城'
-					  this. selectRegion= { ...this.data.selectRegion,
-			              selectDistrictId: -1,
-			              selectAreaId: -1,
-			              list: []
-			            }
-			          return
-			        }
-			        obj.selectDistrictId = side.id
-			        obj.list = side.subItems ? side.subItems : []
-			      } else {
-			        if (side.id === -1 && selectLineId !== -1) {
-			          this.$emit('change', {
-			            districtId: selectDistrictId,
-			            lineId: -1,
-			            areaId: selectAreaId,
-			            stationId: -1
-			          })
-			         this.itemNum= -1,
-			         this.itemName1 =  '全城',
-			         this.selectRegion =  { ...this.data.selectRegion,
-			           selectLineId: -1,
-			           selectStationId: -1,
-			           list: []
-			         }
-			          return
-			        }
-			        obj.selectLineId = side.id
-			      }
-			        this.selectRegion = obj
-			    },
-			    //“全城”详细list的点击事件
+			//“全城”的side的点击事件
+			regionSideClick(side) {
+				const {
+					item,
+					selectDistrictId,
+					selectLineId,
+					selectStationId,
+					selectAreaId
+				} = this.selectRegion
+				let obj = { ...this.selectRegion,
+					list: side.subItems ? side.subItems : []
+				}
+				if (item === 0) {
+					//点击“全部”时关闭下拉框
+					if (side.id === -1 && selectDistrictId !== -1) {
+						this.$emit('change', {
+							districtId: -1,
+							lineId: selectLineId,
+							areaId: -1,
+							stationId: selectStationId
+						})
+						this.itemNum = -1
+						this.itemName1 = '全城'
+						this.selectRegion = { ...this.selectRegion,
+							selectDistrictId: -1,
+							selectAreaId: -1,
+							list: []
+						}
+						return
+					}
+					obj.selectDistrictId = side.id
+					obj.list = side.subItems ? side.subItems : []
+				} else {
+					if (side.id === -1 && selectLineId !== -1) {
+						this.$emit('change', {
+							districtId: selectDistrictId,
+							lineId: -1,
+							areaId: selectAreaId,
+							stationId: -1
+						})
+						this.itemNum = -1,
+							this.itemName1 = '全城',
+							this.selectRegion = { ...this.data.selectRegion,
+								selectLineId: -1,
+								selectStationId: -1,
+								list: []
+							}
+						return
+					}
+					obj.selectLineId = side.id
+				}
+				this.selectRegion = obj
+			},
+			//“全城”详细list的点击事件
 			regionListClick(item) {
-			     let obj = { ...this.selectRegion}
-			     if (this.selectRegion.item === 0) {
-			       obj.selectAreaId = item.id
-			     } else {
-			       obj.selectStationId = item.id
-			     }
-			     this.$emit('change', {
-			       districtId: obj.selectDistrictId,
-			       lineId: obj.selectLineId,
-			       areaId: obj.selectAreaId,
-			       stationId: obj.selectStationId
-			     })
-			    this.selectRegion = obj
-			    this.itemNum = -1
-			    this.itemName1 = item.name
-			   },
+				let obj = { ...this.selectRegion
+				}
+				if (this.selectRegion.item === 0) {
+					obj.selectAreaId = item.id
+				} else {
+					obj.selectStationId = item.id
+				}
+				this.$emit('change', {
+					districtId: obj.selectDistrictId,
+					lineId: obj.selectLineId,
+					areaId: obj.selectAreaId,
+					stationId: obj.selectStationId
+				})
+				this.selectRegion = obj
+				this.itemNum = -1
+				this.itemName1 = item.name
+			},
 			//“全城”的item点击事件
 			selectRegionItem(index) {
 				const cityCinemaInfo = this.cityCinemaInfo
-				let obj = { ...this.selectRegion}
+				let obj = { ...this.selectRegion
+				}
 				if (index === 0) {
 					obj.item = 0
 					obj.sideList = cityCinemaInfo.district.subItems
@@ -239,9 +246,9 @@
 					const findItem = obj.sideList.find(item => item.id === obj.selectLineId)
 					obj.list = findItem.subItems ? findItem.subItems : []
 				}
-				this.selectRegion =  obj
+				this.selectRegion = obj 
 			},
-			
+
 		}
 	}
 </script>
@@ -475,7 +482,7 @@
 		color: #fff;
 	}
 
-	/* 蒙板 */
+	/* 遮罩层 */
 
 	.mask {
 		position: fixed;

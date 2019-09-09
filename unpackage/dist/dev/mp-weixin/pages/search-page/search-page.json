@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "empty": "/components/empty",
+    "cinema-section": "/components/cinemaSection"
+  }
 }

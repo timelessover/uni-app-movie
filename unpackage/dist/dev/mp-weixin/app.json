@@ -54,5 +54,6 @@
       "desc": "授权位置"
     }
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap28.json"
 }

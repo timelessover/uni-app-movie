@@ -3,7 +3,11 @@ import App from './App'
 
 import store from './store'  
 
+import request from './utils/request.js'
+
 Vue.prototype.$store = store  
+
+Vue.prototype.$request = request
 
 Vue.config.productionTip = false
 

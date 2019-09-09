@@ -1,11 +1,11 @@
 <template>
-	<view class='container' :style="getPositonStyle">
+	<view class='container' :style="{position: isShow ? 'fixed' : ''}">
 		<view class='topbar'>
-			<navigator class='city-entry' url='../../subPages/city-select/city-select'>
+			<navigator class='city-entry' url='/pages/city-select/city-select'>
 				<text class='city-name'>{{city}}</text>
 				<text class='city-entry-arrow'></text>
 			</navigator>
-			<navigator url='../../search-page/search-page?stype=2' class='search-input'>
+			<navigator url='/pages/search-page/search-page?stype=2' class='search-input'>
 				<text class='iconfont icon-sousuo'></text>搜影院</navigator>
 		</view>
 		<view class='nav-wrapper'>
@@ -31,18 +31,19 @@
 	import filterNav from '@/components/filter-nav.vue'
 	import request from '@/utils/request.js'
 	import loadingMore from '@/components/loadingMore.vue'
-	import util from '@/utils/util.js'
+	import {getToday} from '@/utils/util.js'
 	const app = getApp()
 	export default {
 		components: {
 			cinemaSection,
 			empty,
-			filterNav
+			filterNav,
+			loadingMore
 		},
 		data() {
 			return {
 				params: { //url请求参数对象
-					day: util.getToday(),
+					day: getToday(),
 					offset: 0,
 					limit: 20,
 					districtId: -1,
@@ -60,16 +61,10 @@
 				cityCinemaInfo: {}, //城市影院信息
 				loadComplete: false, //数据是否加载完
 				isShow: false, //导航下拉框是否展开
-
 			}
 
 		},
 		computed: {
-			getPositonStyle() {
-				return {
-					position: this.isShow ? "fixed" : ""
-				}
-			},
 			city(){
 				if (!this.$store.state.selectCity) {
 					return '正在定位'
@@ -99,7 +94,6 @@
 			},
 			// 当过滤条件变化时调用的函数
 			changeCondition(obj) {
-				console.log(obj)
 				uni.showLoading({
 					title: '正在加载...'
 				})
@@ -110,9 +104,11 @@
 				this.cinemas = []
 				this.nothing = false
 				this.getCinemas(this.params).then((list) => {
-					if (!list[1].length) {
+					if (!list[1].data.cinemas.length) {
 						this.nothing = true
 					}
+					this.cinemas = [...this.cinemas, ...list[1].data.cinemas]
+					this.loadComplete = !list[1].data.paging.hasMore
 					uni.hideLoading()
 				})
 			},
@@ -122,19 +118,23 @@
 				this.isShow = item !== -1
 			},
 		},
-		onLoad() {
+		created() {
 			this.initPage()
 		},
 
 		//上拉触底加载更多
 		onReachBottom() {
-			if (this.data.loadComplete) {
+			if (this.loadComplete) {
 				return
 			}
-			const params = { ...this.data.params,
-				offset: this.data.cinemas.length
+			const params = { ...this.params,
+				offset: this.cinemas.length
 			}
-			this.getCinemas(params)
+			this.getCinemas(params).then((res) => {
+				this.cinemas = [...this.cinemas, ...res[1].data.cinemas]
+				this.loadComplete = !res[1].data.paging.hasMore
+				uni.hideLoading()
+			})
 		},
 		//转发
 		onShareAppMessage(res) {
