@@ -7,7 +7,7 @@
         <text v-if='comment.purchase' class='buy'>购</text>
       </view>
       <view class='stars'>
-         <image class='movie-star' v-for='(item,index) in comment.stars' :key='index' src=`/assets/images/${item}.png` mode='aspectFill'></image>
+         <image class='movie-star' v-for='(item,index) in comment.stars' :key='index' :src='item' mode='aspectFill'></image>
       </view>
       <view class='content'>{{comment.content}}</view>
       <view class='footer'>
@@ -22,6 +22,13 @@
 </template>
 
 <script>
+	export default{
+		props:{
+			comment:{
+				type:Object
+			}
+		}
+	}
 </script>
 
 <style lang='scss'>

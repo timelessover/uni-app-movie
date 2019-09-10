@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/cinema/cinema",
     "pages/movie/movie",
+    "pages/movie-detail/movie-detail",
+    "pages/cinema/cinema",
     "pages/user/user",
     "pages/city-select/city-select",
     "pages/search-page/search-page",
-    "pages/movie-detail/movie-detail",
     "pages/video-page/video-page",
     "pages/about-page/about-page",
     "pages/buy-snack/buy-snack",
@@ -54,6 +54,5 @@
       "desc": "授权位置"
     }
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap28.json"
+  "usingComponents": {}
 }
