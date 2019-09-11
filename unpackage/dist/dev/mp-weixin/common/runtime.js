@@ -104,7 +104,7 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/loadingMore":1,"components/movieSection":1,"components/commentSection":1,"components/cinemaSection":1,"components/empty":1,"components/filter-nav":1,"components/select-time":1,"components/select-movie":1};
+/******/ 		var cssChunks = {"components/loadingMore":1,"components/movieSection":1,"components/commentSection":1,"components/cinemaSection":1,"components/empty":1,"components/filter-nav":1,"components/select-time":1,"components/cinemaMap":1,"components/select-movie":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {

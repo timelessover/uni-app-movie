@@ -2,7 +2,7 @@
 	<view class='container' :style="{position:isShow?'fixed':''}">
 	  <view class='top'>
 	    <view>
-	      <select-time :start-time='showTime' @selectDayEvent='changeTime'></select-time>
+	      <selectTime :start-time='showTime' @selectDayEvent='changeTime'></selectTime>
 	    </view>
 	    <view>
 	      <filter-nav :city-cinema-info='cityCinemaInfo' @change='changeCondition' @toggleShow='toggleShow' v-show='isShow'></filter-nav>
@@ -10,7 +10,7 @@
 	  </view>
 	  <view class='main-content'>
 	    <view class='cinema-list'>
-		  <cinemaSection v-for="(cinema,index) in cinemas" :key="cinema.id" :cinema="cinema"></cinemaSection>
+		  <cinemaSection v-for="(cinema,index) in cinemas" :key="cinema.id" :cinema="cinema" :movieId = "params.movieId" :day="params.day"></cinemaSection>
 	    </view>
 	    <view v-if='!loadComplete && cinemas.length'>
 	      <loadingMore></loadingMore>
@@ -30,7 +30,8 @@
 	import loadingMore from '@/components/loadingMore.vue'
 	import cinemaSection from '@/components/cinemaSection.vue'
 	import selectTime from '@/components/select-time.vue'
-	import filterNav from '@/components/filter-nav.vue'  
+	import filterNav from '@/components/filter-nav.vue'
+	  
 	export default {
 		components:{
 			selectTime,
@@ -70,7 +71,6 @@
 		},
 		methods:{
 			initPage(options) {
-				console.log(options)
 				const movieId = options.movieId
 				const movieName = options.movieName
 				const showTime = options.showTime //影片上映日期
@@ -85,7 +85,6 @@
 			},
 			//获取影院列表
 			getCinemas(params) {
-				console.log(params)
 				return new Promise((resolve, reject) => {
 					this.$request(`/ajax/movie?forceUpdate=${Date.now()}`,params,'POST').then(res=>{
 						this.cinemas = this.cinemas.concat(res[1].data.cinemas),
@@ -106,6 +105,7 @@
 			},
 			//当选择的时间变化时触发
 			changeTime(day) {
+				console.log(day)
 				this.params = { ...this.params,
 					...day
 				}

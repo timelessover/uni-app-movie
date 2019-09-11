@@ -25,11 +25,13 @@
 <script>
 	export default{
 		props:{
-			cinema: Object
+			cinema: Object,
+			movieId: Number,
+			day: String || Number
 		},
 		computed:{
 			url(){
-				return `/pages/cinema-detail/cinema-detail?cinemaId=${this.cinema.id}&movieId=${this.cinema.movieId}&day=${this.cinema.day}`
+				return `/pages/cinema-detail/cinema-detail?cinemaId=${this.cinema.id}&movieId=${this.movieId}&day=${this.day}`
 			}
 		}
 	}

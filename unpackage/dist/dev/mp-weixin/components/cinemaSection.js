@@ -132,11 +132,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 var _default =
 {
   props: {
-    cinema: Object },
+    cinema: Object,
+    movieId: Number,
+    day: String || Number },
 
   computed: {
     url: function url() {
-      return "/pages/cinema-detail/cinema-detail?cinemaId=".concat(this.cinema.id, "&movieId=").concat(this.cinema.movieId, "&day=").concat(this.cinema.day);
+      return "/pages/cinema-detail/cinema-detail?cinemaId=".concat(this.cinema.id, "&movieId=").concat(this.movieId, "&day=").concat(this.day);
     } } };exports.default = _default;
 
 /***/ }),

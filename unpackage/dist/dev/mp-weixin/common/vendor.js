@@ -1716,8 +1716,10 @@ _vue.default.use(_vuex.default);
 var store = new _vuex.default.Store({
   state: {
     userLocation: null, // 用户的位置信
-    selectCity: null // 用户选择城市
-  },
+    selectCity: null, // 用户选择城市
+    days: null,
+    day: null },
+
   getters: {},
 
 
@@ -1727,6 +1729,13 @@ var store = new _vuex.default.Store({
     },
     selectCity: function selectCity(state, obj) {
       state.selectCity = obj;
+    },
+    getDays: function getDays(state, arr) {
+      console.log(arr);
+      state.days = arr;
+    },
+    getDay: function getDay(state, item) {
+      state.day = item;
     } },
 
   actions: {

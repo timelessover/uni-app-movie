@@ -3,7 +3,7 @@
 		<view class='post-bg' :style='bgImg'></view>
 		<view class='post-bg-mask'></view>
 		<scroll-view class='swiper-wrapper scroll-view_H' scroll-x scroll-with-animation :scroll-left='scrollLeft'>
-			<view class='movie-item' v-for='(item,index) in movies' :key='item.id' @click='selectMovie(item)'>
+			<view class='movie-item' v-for='(item,index) in movies' :key='item.id' @click='selectMovie(item)' :id='ids(index)' >
 				<view :class="['post',{'select':movie.id===item.id}]">
 					<image :src='item.img'></image>
 				</view>
@@ -26,7 +26,6 @@
 		},
 		data() {
 			return {
-				movies: [],
 				movie: null, //选中的电影
 				scrollLeft: 0, //设置滚动条位置
 				size: 0, //电影item的大小（包括margin）
@@ -35,10 +34,18 @@
 		},
 		computed: {
 			bgImg() {
-				return `background-image: url(${this.movie.img})`
+				if(this.movie) return `background-image: url(${this.movie.img})`
 			}
 		},
+		created(){
+			this.selectMovie()
+		},
 		methods: {
+			ids(index){
+				if(this.movie) {
+					return `item${index}`
+				}
+			},
 			selectMovie(curMovie) {
 				const {
 					movies
@@ -58,15 +65,13 @@
 						this.scrollLeft = size * index
 					})
 				}
-				this.$emit('selectMovie', {
-					movie
-				})
+				this.$emit('selectMovie', movie)
 			},
 			// 计算节点大小
 			calcSize() {
 				return new Promise((resolve, reject) => {
 					const query = uni.createSelectorQuery().in(this)
-					query.select(`#item1`).fields({
+					query.select('#item1').fields({
 						size: true,
 						computedStyle: ['margin-left']
 					}, function(res) {

@@ -105,7 +105,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var empty = function empty() {return __webpack_require__.e(/*! import() | components/empty */ "components/empty").then(__webpack_require__.bind(null, /*! @/components/empty.vue */ 167));};var loadingMore = function loadingMore() {return __webpack_require__.e(/*! import() | components/loadingMore */ "components/loadingMore").then(__webpack_require__.bind(null, /*! @/components/loadingMore.vue */ 146));};var cinemaSection = function cinemaSection() {return __webpack_require__.e(/*! import() | components/cinemaSection */ "components/cinemaSection").then(__webpack_require__.bind(null, /*! @/components/cinemaSection.vue */ 160));};var selectTime = function selectTime() {return Promise.all(/*! import() | components/select-time */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/select-time")]).then(__webpack_require__.bind(null, /*! @/components/select-time.vue */ 181));};var filterNav = function filterNav() {return __webpack_require__.e(/*! import() | components/filter-nav */ "components/filter-nav").then(__webpack_require__.bind(null, /*! @/components/filter-nav.vue */ 174));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var empty = function empty() {return __webpack_require__.e(/*! import() | components/empty */ "components/empty").then(__webpack_require__.bind(null, /*! @/components/empty.vue */ 167));};var loadingMore = function loadingMore() {return __webpack_require__.e(/*! import() | components/loadingMore */ "components/loadingMore").then(__webpack_require__.bind(null, /*! @/components/loadingMore.vue */ 146));};var cinemaSection = function cinemaSection() {return __webpack_require__.e(/*! import() | components/cinemaSection */ "components/cinemaSection").then(__webpack_require__.bind(null, /*! @/components/cinemaSection.vue */ 160));};var selectTime = function selectTime() {return Promise.all(/*! import() | components/select-time */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/select-time")]).then(__webpack_require__.bind(null, /*! @/components/select-time.vue */ 193));};var filterNav = function filterNav() {return __webpack_require__.e(/*! import() | components/filter-nav */ "components/filter-nav").then(__webpack_require__.bind(null, /*! @/components/filter-nav.vue */ 174));};var _default =
+
 
 
 
@@ -177,7 +178,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     initPage: function initPage(options) {
-      console.log(options);
       var movieId = options.movieId;
       var movieName = options.movieName;
       var showTime = options.showTime; //影片上映日期
@@ -192,7 +192,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     //获取影院列表
     getCinemas: function getCinemas(params) {var _this = this;
-      console.log(params);
       return new Promise(function (resolve, reject) {
         _this.$request("/ajax/movie?forceUpdate=".concat(Date.now()), params, 'POST').then(function (res) {
           _this.cinemas = _this.cinemas.concat(res[1].data.cinemas),
@@ -213,6 +212,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     //当选择的时间变化时触发
     changeTime: function changeTime(day) {var _this3 = this;
+      console.log(day);
       this.params = _objectSpread({}, this.params,
       day);
 

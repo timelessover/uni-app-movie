@@ -8,6 +8,10 @@
 
 <script>
 	import {getToday,formatTime} from '../utils/util.js'
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex';
 	export default {
 		props: {
 			/**
@@ -17,36 +21,27 @@
 				type: String,
 				default: getToday()
 			},
-			/**
-			 * 默认选择的天数
-			 */
-			defaultSelect: {
-				type: String,
-				default: ''
-			},
-			/**
-			 * 日期列表
-			 */
-			days: {
-				type: Array,
-				default: null
-			}
 		},
 		data() {
 			return {
-				selectedDay:'',
-				tdays: []
+				selectedDay:''
 			};
 		},
 		mounted() {
-			this.tdays = this.days
-			//如果没有传递日期列表，就模拟一个日期列表
-			if (!this.tdays) {
+			if (this.startTime) {
 				this.getWeek(this.startTime)
 			}
 		},
+		computed:{
+			tdays(){
+				return this.$store.state.days
+			},
+			day(){
+				return this.$store.state.day
+			}
+		},
 		methods: {
-			//模拟7天时间列表
+			// 模拟7天时间列表
 			getWeek(startTime) {
 				const todayTomorrow = ['今天', '明天', '后天']
 				const week = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
@@ -65,23 +60,26 @@
 						day: formatTime(day).split(' ')[0]
 					})
 				}
-				this.tdays = days
+				this.$store.commit('getDays',days)
 				this.selectDay()
 			},
 			selectDay(itemDay) {
+				// 第一种情况是默认第一个日期
+				// 第二种是切换过程中没有该日期，默认为第一个开始日期
+				console.log(itemDay,this.findDefaultDay(),this.tdays.day)
 				const day = itemDay || this.findDefaultDay() || this.tdays[0].day
 				if (day === this.selectedDay) {
 					return
 				}
-				
 				this.selectedDay =  day
-				console.log(this.selectedDay,itemDay)
 				this.$emit('selectDayEvent', {
 					day
 				})
 			},
+			// 第一次进入页面显示默认日期
 			findDefaultDay() {
-				const day = this.tdays.find(item => item.day === this.defaultSelect)
+				console.log(this.tdays)
+				const day = this.tdays.find(item => item.day == this.day)
 				return day && day.day
 			}
 		}
