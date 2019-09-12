@@ -2,7 +2,7 @@
 	<view class='container' :style="{position:isShow?'fixed':''}">
 	  <view class='top'>
 	    <view>
-	      <selectTime :start-time='showTime' @selectDayEvent='changeTime'></selectTime>
+	      <selectTime :days='days' :start-time='showTime' @selectDayEvent='changeTime' @changeDays='changedays'></selectTime>
 	    </view>
 	    <view>
 	      <filter-nav :city-cinema-info='cityCinemaInfo' @change='changeCondition' @toggleShow='toggleShow' v-show='isShow'></filter-nav>
@@ -15,10 +15,10 @@
 	    <view v-if='!loadComplete && cinemas.length'>
 	      <loadingMore></loadingMore>
 	    </view>
-	    <view v-show='nothing'>
+	    <view v-show ='nothing'>
 			<empty message = "暂无符合条件的影院"></empty>
 	    </view>
-	    <view v-show='noSchedule'>
+	   <view v-show ='noSchedule'>
 			<empty message = "当天暂无场次"></empty>
 	    </view>
 	  </view>
@@ -60,10 +60,11 @@
 					item: '',
 					updateShowDay: false,
 				},
-				cinemas: [], //影院列表 
-				loadComplete: false, //数据是否加载完
-				nothing: false, //是否有符合过滤的影院
-				noSchedule: false //当天是否有场次，原本时间是由后台返回的，但是缺少城市ID就没有返回，导致当天可能没有播放场次
+				days:null,
+				cinemas: [], // 影院列表 
+				loadComplete: false, // 数据是否加载完
+				nothing: false, // 是否有符合过滤的影院
+				noSchedule: false ,// 当天是否有场次，原本时间是由后台返回的，但是缺少城市ID就没有返回，导致当天可能没有播放场次,
 			};
 		},
 		onLoad(options) {
@@ -105,7 +106,6 @@
 			},
 			//当选择的时间变化时触发
 			changeTime(day) {
-				console.log(day)
 				this.params = { ...this.params,
 					...day
 				}
@@ -119,9 +119,14 @@
 					uni.hideLoading()
 					if (!list.length) {
 						this.noSchedule =  true
+						this.nothing = false
 					}
 				})
 				this.getFilter()
+			},
+			// 获取最近七天影院信息
+			changedays(days){
+				this.days = days  
 			},
 			//当过滤条件变化时调用的函数
 			changeCondition(obj) {
@@ -137,6 +142,7 @@
 				this.getCinemas(this.params).then((list) => {
 					if (!list.length) {
 						this.nothing = true
+						this.noSchedule= false
 					}
 					uni.hideLoading()
 				})

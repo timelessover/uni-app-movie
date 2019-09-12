@@ -3,8 +3,8 @@
 		<view class='post-bg' :style='bgImg'></view>
 		<view class='post-bg-mask'></view>
 		<scroll-view class='swiper-wrapper scroll-view_H' scroll-x scroll-with-animation :scroll-left='scrollLeft'>
-			<view class='movie-item' v-for='(item,index) in movies' :key='item.id' @click='selectMovie(item)' :id='ids(index)' >
-				<view :class="['post',{'select':movie.id===item.id}]">
+			<view class='movie-item' v-for='(item,index) in movies' :key='item.id' @click='selectMovie(item)' :id="item.ids" >
+				<view :class="['post',{'select':movie.id===item.id}]" >
 					<image :src='item.img'></image>
 				</view>
 			</view>
@@ -34,23 +34,24 @@
 		},
 		computed: {
 			bgImg() {
-				if(this.movie) return `background-image: url(${this.movie.img})`
+				if (this.movie) return `background-image: url(${this.movie.img})`
 			}
 		},
-		created(){
+		mounted() {
 			this.selectMovie()
 		},
 		methods: {
-			ids(index){
-				if(this.movie) {
+			ids(index) {
+				if (this.movie) {
 					return `item${index}`
 				}
 			},
 			selectMovie(curMovie) {
+				console.log(curMovie)
 				const {
 					movies
 				} = this
-				const movie = curMovie || movies.find(item => item.id == this.defaultSelectID) ||movies[this.i]
+				const movie = curMovie || movies.find(item => item.id == this.defaultSelectID) || movies[this.i]
 				if (movies.length && this.movie && movie.id === this.movie.id) {
 					return
 				}
@@ -62,7 +63,9 @@
 					this.calcSize().then((size) => {
 						this.movie = movie
 						this.size = size
+						console.log(size)
 						this.scrollLeft = size * index
+						console.log(this.scrollLeft)
 					})
 				}
 				this.$emit('selectMovie', movie)
@@ -75,9 +78,11 @@
 						size: true,
 						computedStyle: ['margin-left']
 					}, function(res) {
+						console.log(res)
 						let size = 0
 						if (res) {
 							size = res.width + parseFloat(res['margin-left'])
+							console.log(size)
 						}
 						resolve(size)
 					}).exec()

@@ -1,0 +1,173 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.container {
+  width: 100vw;
+  min-height: 100vh;
+  background: #f0f0f0;
+  overflow: auto;
+}
+.ticket-content {
+  margin: 24rpx;
+  background: #fff;
+  border-radius: 8rpx;
+}
+.cinema {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 76rpx;
+  line-height: 76rpx;
+  color: #666;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  border-bottom: 1px solid #f0f0f0;
+}
+.triangle {
+  width: 16rpx;
+  height: 16rpx;
+  border-left: 1px solid #999;
+  border-top: 1px solid #999;
+  margin-left: 5rpx;
+  -webkit-transform: rotate(135deg) scale(0.8);
+      -ms-transform: rotate(135deg) scale(0.8);
+          transform: rotate(135deg) scale(0.8);
+}
+.movie-info {
+  padding: 0 30rpx;
+}
+.movie-info .movie-name {
+  font-size: 36rpx;
+  color: #333;
+  margin: 20rpx 0;
+}
+.movie-info .showTime {
+  font-size: 30rpx;
+  color: #f03d37;
+}
+.movie-info .position {
+  font-size: 30rpx;
+  color: #666;
+  margin: 10rpx 0 20rpx;
+}
+.divider-box {
+  position: relative;
+  border-bottom: 1px dashed #e6e6e6;
+  margin: 40rpx 0;
+}
+.divider {
+  position: absolute;
+  top: -16rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  left: 0;
+  right: 0;
+  font-size: 12px;
+}
+.divider::before {
+  position: absolute;
+  top: 50%;
+  left: -20rpx;
+  content: "";
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+  background: #f0f0f0;
+  border-radius: 20rpx;
+  margin-top: -20rpx;
+}
+.divider::after {
+  position: absolute;
+  top: 50%;
+  right: -20rpx;
+  content: "";
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+  background: #f0f0f0;
+  border-radius: 20rpx;
+  margin-top: -20rpx;
+}
+.divider-box .status {
+  position: absolute;
+  right: 26rpx;
+  top: -56rpx;
+  width: 112rpx;
+  height: 112rpx;
+}
+.code-box {
+  width: 18em;
+  margin: 0 auto;
+  padding: 10rpx 20rpx;
+  color: #b2b2b2;
+  font-size: 34rpx;
+}
+.rq {
+  opacity: 0.4;
+  text-align: center;
+}
+.rq image {
+  width: 500rpx;
+  height: 500rpx;
+  margin: 0 auto;
+}
+.box {
+  padding: 30rpx;
+  background: #fff;
+  font-size: 30rpx;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 20rpx;
+}
+.phone-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 28rpx;
+  color: #999;
+}
+.phone {
+  color: #f03d37;
+}
+.map-box {
+  margin-bottom: 20rpx;
+}
+

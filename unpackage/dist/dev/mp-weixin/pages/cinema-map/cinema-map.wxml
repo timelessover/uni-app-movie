@@ -1,1 +1,1 @@
-<view></view>
+<view class="container"><map class="map" id="map" longitude="{{cinemaData.longitude}}" latitude="{{cinemaData.latitude}}" show-location markers="{{markers}}"></map><cover-image class="pos" src="/static/images/pos.png" data-event-opts="{{[['tap',[['position',['$event']]]]]}}" bindtap="__e"></cover-image><view class="cinema-box"><view class="cinema-name">{{cinemaData.nm}}</view><view class="cinema-position">{{cinemaData.addr}}</view></view></view>

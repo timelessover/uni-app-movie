@@ -12,15 +12,15 @@
 					<text class='title'>{{movie.nm}} </text>
 					<text class='grade'>
 						<text v-if='!movie.globalReleased'>{{movie.wish}}<text class='small'>人想看</text></text>
-						<text v-eles-if="movie.sc!=='0.0'">{{movie.sc}}<text class='small'>分</text></text>
-						<text v-else-if><text class='small'>暂无评分</text></text>
+						<text v-else-if="movie.sc!=='0.0'">{{movie.sc}}<text class='small'>分</text></text>
+						<text v-else><text class='small'>暂无评分</text></text>
 					</text>
 				</view>
 				<view class='movie-desc line-ellipsis'>{{movie.desc}}</view>
 			</view>
 		</view>
 		<view>
-			<selectTime  @selectDayEvent='selectDay' />
+			<selectTime  :days = 'days' @selectDayEvent='selectDay'  :day='day'/>
 		</view>
 		<view>
 			<view v-if='timeList.length'>
@@ -86,10 +86,6 @@
 	import selectMovie from "@/components/select-movie.vue"
 	import selectTime from "@/components/select-time.vue"
 	import {getRandom,formatNumber} from "../../utils/util"
-	import {
-		mapState,
-		mapMutations
-	} from 'vuex';
 	export default {
 		components: {
 			cinemaMap,
@@ -103,18 +99,17 @@
 				cinemaDetail: null, //影院详情
 				movie: null, //选中的电影
 				movies: null, //电影列表
-				days: [], //该电影的排片日期列表
 				day:'',
 				timeList: [], //当天播放电影的时间段
 				divideDealList: [], //影院分类零食列表
-				first: true //只在第一次提示
+				first: true ,//只在第一次提示
+				days:''
 			}
 		},
 		onLoad(options) {
 			this.initPage(options)
 			
 		},
-		
 		methods: {
 			//初始化页面
 			initPage(options) {
@@ -123,13 +118,13 @@
 				} = options
 				this.cinemaId = cinemaId
 				this.movieId = movieId
-				this.$store.commit('getDay', day)
 				uni.showLoading({
 					title: '正在加载...',
 				})
 				this.$request(`/ajax/cinemaDetail?cinemaId=${cinemaId}&movieId=${movieId}`).then(res=>{
 					this.cinemaDetail= res[1].data
 					this.movies= this.formatMovie(res[1].data.showData.movies)
+					
 					this.divideDealList= this.formatUrl(res[1].data.dealList.divideDealList)
 					uni.hideLoading()
 				})
@@ -144,17 +139,17 @@
 					})
 				})
 				this.movie = movie
-				this.days = days 
-				this.$store.commit('getDays', days)
+				this.days = days
 				this.timeList =  this.createEndTime(movie.shows[0].plist, movie.dur)
 			},
-			//选择时间
+			// 选择时间
 			selectDay(obj) {
 				let day = obj.day
 				const movie = this.movie
 				const index = movie.shows.findIndex(item => item.showDate === day)
 				this.timeList =  this.createEndTime(movie.shows[index].plist, movie.dur)
 			},
+			
 			//跳转到“套餐详情”页面
 			goSnackPage(info) {
 				//将参数转化为JSON通过页面跳转时传递
@@ -232,10 +227,11 @@
 			formatMovie(arr) {
 				let list = []
 				if (Array.isArray(arr)) {
-					arr.forEach(item => {
+					arr.forEach((item,index) => {
 						list.push({
 							...item,
-							img: item.img.replace('w.h', '148.208')
+							img: item.img.replace('w.h', '148.208'),
+							ids:'item' + index
 						})
 					})
 				}

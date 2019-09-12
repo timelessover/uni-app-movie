@@ -1,17 +1,13 @@
 <template>
 	<view>
 		<scroll-view class='timeline scroll-view_H' scroll-x>
-			<view v-for='(item,index) in tdays' :class="['day', {'active':item.day==selectedDay}]"  :key='item' @click='selectDay(item.day)'>{{item.title}}</view>
+			<view v-for='(item,index) in days' :class="['day', {'active':item.day==selectedDay}]"  :key='item' @click='selectDay(item.day)'>{{item.title}}</view>
 		</scroll-view>
 	</view>
 </template>
 
 <script>
 	import {getToday,formatTime} from '../utils/util.js'
-	import {
-		mapState,
-		mapMutations
-	} from 'vuex';
 	export default {
 		props: {
 			/**
@@ -21,23 +17,29 @@
 				type: String,
 				default: getToday()
 			},
+			days:{
+				type: Array,
+				default:null
+			},
+			day:{
+				type: String,
+				default: ''
+			}
 		},
 		data() {
 			return {
 				selectedDay:''
 			};
 		},
-		mounted() {
-			if (this.startTime) {
+		mounted(){
+			if (!this.days.length) {
 				this.getWeek(this.startTime)
 			}
 		},
-		computed:{
-			tdays(){
-				return this.$store.state.days
-			},
-			day(){
-				return this.$store.state.day
+		// 父组件时间更新后才进行事件更新，第一次不用调用
+		watch:{
+			days:function(val){
+				this.selectDay()
 			}
 		},
 		methods: {
@@ -48,7 +50,7 @@
 				let days = []
 				//当开始时间大于今天时，日期从大的时间开始算（主要是为了“预售”时间）
 				let start = getToday()
-				if (startTime > start) { //都是“2018-09-12”的格式，所以可以直接相减，否则转化为毫秒在相减
+				if (startTime > start) {
 					start = startTime
 				}
 				for (let i = 0; i < 7; i++) {
@@ -60,14 +62,12 @@
 						day: formatTime(day).split(' ')[0]
 					})
 				}
-				this.$store.commit('getDays',days)
-				this.selectDay()
+				this.$emit('changeDays',days)
 			},
 			selectDay(itemDay) {
 				// 第一种情况是默认第一个日期
 				// 第二种是切换过程中没有该日期，默认为第一个开始日期
-				console.log(itemDay,this.findDefaultDay(),this.tdays.day)
-				const day = itemDay || this.findDefaultDay() || this.tdays[0].day
+				const day = itemDay || this.findDefaultDay() || this.days[0].day
 				if (day === this.selectedDay) {
 					return
 				}
@@ -78,9 +78,11 @@
 			},
 			// 第一次进入页面显示默认日期
 			findDefaultDay() {
-				console.log(this.tdays)
-				const day = this.tdays.find(item => item.day == this.day)
-				return day && day.day
+				if(this.days){
+					const day = this.days.find(item => item.day == this.day)
+					return day && day.day
+				}
+				
 			}
 		}
 	}

@@ -7,8 +7,7 @@ const store = new Vuex.Store({
 	state: {
 		userLocation: null, // 用户的位置信
 		selectCity: null,  // 用户选择城市
-		days:null,
-		day:null
+		days:null
 	},
 	getters:{
 		
@@ -20,13 +19,6 @@ const store = new Vuex.Store({
 		selectCity(state,obj){
 			state.selectCity = obj
 		},
-		getDays(state,arr){
-			console.log(arr)
-			state.days = arr
-		},
-		getDay(state,item){
-			state.day = item
-		}
 	},
 	actions: {
 		// getLocation(context){
