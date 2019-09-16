@@ -17,13 +17,14 @@
     "pages/movie-order-detail/movie-order-detail",
     "pages/select-cinema/select-cinema",
     "pages/snack-order/snack-order",
-    "pages/snack-page/snack-page"
+    "pages/snack-page/snack-page",
+    "pages/login/login",
+    "pages/register/register"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "white",
-    "navigationBarBackgroundColor": "#e54847",
-    "backgroundColor": "#e54847"
+    "navigationBarBackgroundColor": "#e54847"
   },
   "tabBar": {
     "color": "#696969",
@@ -55,5 +56,5 @@
     }
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap9.json"
+  "sitemapLocation": "sitemap85.json"
 }

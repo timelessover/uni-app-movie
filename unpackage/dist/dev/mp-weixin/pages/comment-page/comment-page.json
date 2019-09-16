@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "观众评论",
   "usingComponents": {
     "comment-section": "/components/commentSection"
   }

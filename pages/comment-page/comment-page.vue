@@ -3,14 +3,15 @@
 		<view>
 			<view class='hot' v-if='hcmts.length'>
 				<view class='comment-title'>热门评论</view>
-				<view>
-
+				<view  v-for='(comment,index) in hcmts' :key='comment.id'>
+					<commentSection :comment='comment'></commentSection>
+				</view>
 				</view>
 			</view>
 			<view class='hot' v-if='cmts.length'>
 				<view class='comment-title'>最新评论</view>
-				<view>
-					<commentSection v-for='(item,comment) in cmts' :key='comment.id' :comment='comment'></commentSection>
+				<view  v-for='(comment,index) in cmts' :key='comment.id'>
+					<commentSection :comment='comment'></commentSection>
 				</view>
 			</view>
 			<view class='loadingMore' v-if='!loadComplete && cmts.length && hcmts.length'>
@@ -22,10 +23,13 @@
 
 <script>
 	import commentSection from '@/components/commentSection.vue';
+
+	import {handleImgandStars} from '@/mixin/handleImgandStars.js';
 	export default {
 		components: {
 			commentSection
 		},
+		mixins: [handleImgandStars],
 		data() {
 			return {
 				movieId: '',
@@ -62,7 +66,7 @@
 				}
 				const cmts = this.cmts
 				this.$request(`/mmdb/comments/movie/${movieId}.json?_v_=yes&offset=${cmts.length}`).then(res => {
-					let comments = { ...resp[1].data
+					let comments = { ...res[1].data
 					}
 					const newCmts = cmts.concat(this.formatData(comments.cmts))
 					uni.hideLoading()
@@ -71,34 +75,6 @@
 					this.loadComplete = newCmts.length >= comments.total
 				})
 			},
-			//处理数据
-			formatData(arr) {
-				let list = []
-				if (arr.length) {
-					list = arr.map(item => {
-						let temp = { ...item
-						}
-						temp.avatarurl = temp.avatarurl || '/static/images/avatar.png'
-						temp.purchase = !!(temp.tagList && temp.tagList.fixed.some(item => item.id === 4))
-						temp.stars = this.formatStar(temp.score)
-						temp.calcTime = util.calcTime(temp.startTime)
-						return temp
-					})
-				}
-				return list
-			},
-			//处理评分星星
-			formatStar(sc) {
-				//1分对应满星，0.5对应半星
-				let stars = new Array(5).fill('star-empty')
-				const fullStars = Math.floor(sc) //满星的个数
-				const halfStar = sc % 1 ? 'star-half' : 'star-empty' //半星的个数，半星最多1个
-				stars.fill('star-full', 0, fullStars) //填充满星
-				if (fullStars < 5) {
-					stars[fullStars] = halfStar; //填充半星
-				}
-				return stars
-			}
 		}
 	}
 </script>

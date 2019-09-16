@@ -173,7 +173,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _request = _interopRequireDefault(__webpack_require__(/*! @/utils/request.js */ 14));
-var _vuex = __webpack_require__(/*! vuex */ 8);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance");}function _iterableToArray(iter) {if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) {for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {arr2[i] = arr[i];}return arr2;}}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var movieSection = function movieSection() {return __webpack_require__.e(/*! import() | components/movieSection */ "components/movieSection").then(__webpack_require__.bind(null, /*! @/components/movieSection.vue */ 159));};var loadingMore = function loadingMore() {return __webpack_require__.e(/*! import() | components/loadingMore */ "components/loadingMore").then(__webpack_require__.bind(null, /*! @/components/loadingMore.vue */ 166));};
+var _vuex = __webpack_require__(/*! vuex */ 8);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance");}function _iterableToArray(iter) {if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) {for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {arr2[i] = arr[i];}return arr2;}}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var movieSection = function movieSection() {return __webpack_require__.e(/*! import() | components/movieSection */ "components/movieSection").then(__webpack_require__.bind(null, /*! @/components/movieSection.vue */ 172));};var loadingMore = function loadingMore() {return __webpack_require__.e(/*! import() | components/loadingMore */ "components/loadingMore").then(__webpack_require__.bind(null, /*! @/components/loadingMore.vue */ 179));};
 
 
 
@@ -183,8 +183,8 @@ var app = getApp();var _default =
     movieSection: movieSection,
     loadingMore: loadingMore },
 
-  data: function data() {var _ref;
-    return _ref = {
+  data: function data() {
+    return {
       tabList: [{
         title: '热映' },
 
@@ -192,19 +192,16 @@ var app = getApp();var _default =
         title: '待映' }],
 
 
-      switchItem: 0 }, _defineProperty(_ref, "switchItem",
-    0), _defineProperty(_ref, "movieList0",
-
-    []), _defineProperty(_ref, "movieIds0",
-    []), _defineProperty(_ref, "loadComplete0",
-    false), _defineProperty(_ref, "mostExpectedList",
-
-    []), _defineProperty(_ref, "movieList1",
-    []), _defineProperty(_ref, "movieIds1",
-    []), _defineProperty(_ref, "loadComplete1",
-    false), _defineProperty(_ref, "loadComplete2",
-    false), _ref;
-
+      switchItem: 0,
+      movieList0: [],
+      movieIds0: [],
+      loadComplete0: false, //‘正在上映’数据是否加载到最后一条
+      mostExpectedList: [],
+      movieList1: [],
+      movieIds1: [],
+      loadComplete1: false,
+      loadComplete2: false //水平滚动加载的数据是否加载完毕
+    };
   },
   computed: {
     city: function city() {
@@ -225,7 +222,7 @@ var app = getApp();var _default =
         this.getComing();
       }
     },
-    getComing: function getComing() {var _this = this;
+    getComing: function getComing() {var _this = this;var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
       (0, _request.default)('/ajax/mostExpected?limit=10&offset=0&token=').then(function (res) {
         uni.hideLoading();
         var mostExpectedList = _this.formatImgUrl(res[1].data.coming, true);
@@ -233,6 +230,15 @@ var app = getApp();var _default =
           item.url = "/pages/movie-detail/movie-detail?movieId=".concat(item.id);
         });
         _this.mostExpectedList = mostExpectedList;
+        if (index === 1) {
+          if (res[1].statusCode === 200) {
+            uni.stopPullDownRefresh();
+            uni.showToast({
+              title: '刷新成功',
+              duration: 2000 });
+
+          }
+        }
       });
 
       (0, _request.default)('/ajax/comingList?token=&limit=10').then(function (res) {
@@ -263,11 +269,7 @@ var app = getApp();var _default =
     initPage: function initPage() {
       this.firstLoad();
     },
-    //第一次加载页面时请求‘正在热映的数据’
-    firstLoad: function firstLoad() {var _this2 = this;
-      uni.showLoading({
-        title: '正在加载...' });
-
+    getFrirstList: function getFrirstList() {var _this2 = this;var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
       (0, _request.default)('/ajax/movieOnInfoList?token=').then(function (res) {
         _this2.movieList0 = _this2.formatImgUrl(res[1].data.movieList);
         uni.hideLoading();
@@ -275,7 +277,23 @@ var app = getApp();var _default =
         if (res[1].data.movieList.length >= res[1].data.movieIds.length) {
           _this2.loadComplete0 = true;
         }
+        if (index === 1) {
+          if (res[1].statusCode === 200) {
+            uni.stopPullDownRefresh();
+            uni.showToast({
+              title: '刷新成功',
+              duration: 2000 });
+
+          }
+        }
       });
+    },
+    //第一次加载页面时请求‘正在热映的数据’
+    firstLoad: function firstLoad() {
+      uni.showLoading({
+        title: '正在加载...' });
+
+      this.getFrirstList();
     },
     //上拉触底刷新的加载函数
     ReachBottom: function ReachBottom(list, ids, complete, item) {var _this3 = this;
@@ -304,7 +322,7 @@ var app = getApp();var _default =
       }
       (0, _request.default)("/ajax/mostExpected?limit=10&offset=".concat(length, "&token=")).then(function (res) {
         _this4.tmostExpectedList = mostExpectedList.concat(_this4.formatImgUrl(res[1].data.coming, true));
-        _this4.loadComplete2 = !res.data.paging.hasMore || !res[1].data.coming.length; //当返回的数组长度为0时也认为数据请求完毕
+        _this4.loadComplete2 = !res[1].data.paging.hasMore || !res[1].data.coming.length; //当返回的数组长度为0时也认为数据请求完毕
       });
     } },
 
@@ -327,6 +345,15 @@ var app = getApp();var _default =
     } else {
       this.ReachBottom(movieList1, movieIds1, loadComplete1, 1);
     }
+  },
+  onPullDownRefresh: function onPullDownRefresh() {var
+    switchItem = this.switchItem;
+    if (switchItem === 0) {
+      this.getFrirstList(1);
+    } else {
+      this.getComing(1);
+    }
+
   },
   //转发
   onShareAppMessage: function onShareAppMessage(res) {

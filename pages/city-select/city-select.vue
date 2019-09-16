@@ -37,8 +37,12 @@
 
 <script>
 	import empty from '@/components/empty.vue'
-	import {throttle} from '../../utils/util.js'
-	import {citys} from '../../utils/citys.js'
+	import {
+		throttle
+	} from '../../utils/util.js'
+	import {
+		citys
+	} from '../../utils/citys.js'
 	import {
 		mapState,
 		mapMutations
@@ -56,8 +60,8 @@
 				navItemHeight: 0, //侧边导航项的高度
 				sections: [], //所有section，保存每个section的节点在文档的位置信息
 				inNavbar: false, //手指是否在侧边导航，主要是区别后面wx.pageScrollTo触发的滚动还是直接触发的滚动
-				result: [] ,//城市查询结果列表
-				searchValue:'' //搜索关键字
+				result: [], //城市查询结果列表
+				searchValue: '' //搜索关键字
 			};
 		},
 		onLoad() {
@@ -99,8 +103,8 @@
 			const scrollTop = e.scrollTop
 			this.handlePageScroll(sections, scrollTop)
 		}),
-		watch:{
-			searchValue:function(val){
+		watch: {
+			searchValue: function(val) {
 				const value = val.trim().toUpperCase()
 				let result = []
 				if (value) {
@@ -268,29 +272,25 @@
 		background-color: #ebebeb;
 		color: #333;
 		font-size: 28rpx;
+
+		.search-city {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100rpx;
+			background-color: #f5f5f5;
+			padding: 22rpx 30rpx;
+			box-sizing: border-box;
+		}
+
+		.search-input {
+			height: 2em;
+			background: #fff;
+			padding-left: 60rpx;
+			color: #999;
+		}
 	}
-
-	/* 搜索区样式 */
-
-	.search-city {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100rpx;
-		background-color: #f5f5f5;
-		padding: 22rpx 30rpx;
-		box-sizing: border-box;
-	}
-
-	.search-input {
-		height: 2em;
-		background: #fff;
-		padding-left: 60rpx;
-		color: #999;
-	}
-
-
 
 	.icon-sousuo {
 		position: absolute;
@@ -309,7 +309,7 @@
 		background: #f5f5f5;
 
 	}
-	
+
 	.result-item {
 		height: 88rpx;
 		line-height: 88rpx;
@@ -330,9 +330,11 @@
 	.section-body {
 		background-color: #f5f5f5;
 		padding-right: 60rpx;
+
 		.section-item:last-child {
 			border: none;
 		}
+
 		.section-item {
 			height: 88rpx;
 			line-height: 88rpx;
@@ -348,6 +350,7 @@
 		background-color: #f5f5f5;
 		padding-bottom: 30rpx;
 		padding-left: 30rpx;
+
 		.section-item {
 			min-width: 26%;
 			background: #fff;
@@ -374,6 +377,7 @@
 		right: 0;
 		width: 30px;
 		text-align: center;
+
 		>view {
 			font-size: 24rpx;
 			line-height: 1.5;

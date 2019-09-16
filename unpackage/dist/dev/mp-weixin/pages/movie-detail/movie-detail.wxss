@@ -167,6 +167,9 @@
       -ms-transform: rotate(180deg);
           transform: rotate(180deg);
 }
+.icon-xiala {
+  text-align: center;
+}
 .scroll-view_H {
   padding: 0 30rpx;
   font-size: 30rpx;

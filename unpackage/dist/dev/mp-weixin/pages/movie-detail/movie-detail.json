@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "影片详情",
   "usingComponents": {
     "comment-section": "/components/commentSection"
   }

@@ -27,7 +27,7 @@
 			comment:{
 				type:Object
 			}
-		}
+		},
 	}
 </script>
 

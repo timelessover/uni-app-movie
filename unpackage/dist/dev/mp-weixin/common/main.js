@@ -67,14 +67,15 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _vuex = __webpack_require__(/*! vuex */ 8);function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var QQMapWX = __webpack_require__(/*! ./static/libs/qqmap-wx-jssdk.min.js */ 9);
+var _vuex = __webpack_require__(/*! vuex */ 8);
 
 
 
-var qqmapsdk;
-qqmapsdk = new QQMapWX({
-  key: 'MH2BZ-4WTK3-2D63K-YZRHP-HM537-HHBD3' });var _default =
 
+
+
+
+__webpack_require__(/*! ./static/font/iconfont.css */ 268);function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var QQMapWX = __webpack_require__(/*! ./static/libs/qqmap-wx-jssdk.min.js */ 9);var qqmapsdk;qqmapsdk = new QQMapWX({ key: 'MH2BZ-4WTK3-2D63K-YZRHP-HM537-HHBD3' });var _default =
 {
   onLaunch: function onLaunch() {
     this.initPage();

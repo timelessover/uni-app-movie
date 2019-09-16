@@ -88,7 +88,8 @@
 				}
 				this.$request(
 					'/deal/goods/price?_v_=yes&token=PgJXM8m4VR2zXDQg6oifDddNBrIAAAAADgkAALyIjr91LRTeK57NBTJaOmpLFZG7eticyNX7QnRmA5phdxjFESSeeyAdwZot9BL0_Q',
-					data, "POST"), then(res => {
+					data, "POST").then(res => {
+					console.log(res)
 					this.cinemaId = obj.cinemaId
 					this.cinemaName = obj.cinemaName
 					this.cinemaData = obj.cinemaData
@@ -114,7 +115,7 @@
 					total: info.dealBrief.originPrice * 1 //合计
 				})
 				uni.navigateTo({
-					url: `/pages/subPages/buy-snack/buy-snack?paramsStr=${paramsStr}`,
+					url: `/pages/buy-snack/buy-snack?paramsStr=${paramsStr}`,
 				})
 			}
 		},

@@ -14,6 +14,7 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));
 
 var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 13));
 
+
 var _request = _interopRequireDefault(__webpack_require__(/*! ./utils/request.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.prototype.$store = _store.default;
@@ -1508,7 +1509,7 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 103:
+/***/ 104:
 /*!*******************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fcinema-map%2Fcinema-map"} ***!
   \*******************************************************************************************/
@@ -1519,13 +1520,13 @@ uni$1;exports.default = _default;
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _cinemaMap = _interopRequireDefault(__webpack_require__(/*! ./pages/cinema-map/cinema-map.vue */ 104));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _cinemaMap = _interopRequireDefault(__webpack_require__(/*! ./pages/cinema-map/cinema-map.vue */ 105));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_cinemaMap.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 111:
+/***/ 112:
 /*!***********************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fcomment-page%2Fcomment-page"} ***!
   \***********************************************************************************************/
@@ -1536,25 +1537,8 @@ createPage(_cinemaMap.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _commentPage = _interopRequireDefault(__webpack_require__(/*! ./pages/comment-page/comment-page.vue */ 112));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _commentPage = _interopRequireDefault(__webpack_require__(/*! ./pages/comment-page/comment-page.vue */ 113));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_commentPage.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
-
-/***/ }),
-
-/***/ 119:
-/*!*********************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fmovie-order%2Fmovie-order"} ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _movieOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/movie-order/movie-order.vue */ 120));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_movieOrder.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
@@ -1666,7 +1650,24 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 127:
+/***/ 120:
+/*!*********************************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fmovie-order%2Fmovie-order"} ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _movieOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/movie-order/movie-order.vue */ 121));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_movieOrder.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 128:
 /*!***********************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fmovie-order-detail%2Fmovie-order-detail"} ***!
   \***********************************************************************************************************/
@@ -1677,7 +1678,7 @@ function normalizeComponent (
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _movieOrderDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/movie-order-detail/movie-order-detail.vue */ 128));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _movieOrderDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/movie-order-detail/movie-order-detail.vue */ 129));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_movieOrderDetail.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
@@ -1699,9 +1700,8 @@ _vue.default.use(_vuex.default);
 var store = new _vuex.default.Store({
   state: {
     userLocation: null, // 用户的位置信
-    selectCity: null, // 用户选择城市
-    days: null },
-
+    selectCity: null // 用户选择城市
+  },
   getters: {},
 
 
@@ -1713,18 +1713,16 @@ var store = new _vuex.default.Store({
       state.selectCity = obj;
     } },
 
-  actions: {
-    // getLocation(context){
-    // 	context.commit('')
-    // }
-  } });var _default =
+  actions: {} });var _default =
+
+
 
 
 store;exports.default = _default;
 
 /***/ }),
 
-/***/ 135:
+/***/ 136:
 /*!*************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fselect-cinema%2Fselect-cinema"} ***!
   \*************************************************************************************************/
@@ -1735,7 +1733,7 @@ store;exports.default = _default;
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _selectCinema = _interopRequireDefault(__webpack_require__(/*! ./pages/select-cinema/select-cinema.vue */ 136));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _selectCinema = _interopRequireDefault(__webpack_require__(/*! ./pages/select-cinema/select-cinema.vue */ 137));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_selectCinema.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
@@ -1765,7 +1763,7 @@ request;exports.default = _default;
 
 /***/ }),
 
-/***/ 143:
+/***/ 144:
 /*!*********************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fsnack-order%2Fsnack-order"} ***!
   \*********************************************************************************************/
@@ -1776,7 +1774,7 @@ request;exports.default = _default;
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _snackOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/snack-order/snack-order.vue */ 144));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _snackOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/snack-order/snack-order.vue */ 145));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_snackOrder.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
@@ -1799,7 +1797,7 @@ createPage(_movie.default);
 
 /***/ }),
 
-/***/ 151:
+/***/ 152:
 /*!*******************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fsnack-page%2Fsnack-page"} ***!
   \*******************************************************************************************/
@@ -1810,8 +1808,42 @@ createPage(_movie.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _snackPage = _interopRequireDefault(__webpack_require__(/*! ./pages/snack-page/snack-page.vue */ 152));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _snackPage = _interopRequireDefault(__webpack_require__(/*! ./pages/snack-page/snack-page.vue */ 153));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_snackPage.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 160:
+/*!*********************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ 161));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_login.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 166:
+/*!***************************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fregister%2Fregister"} ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _register = _interopRequireDefault(__webpack_require__(/*! ./pages/register/register.vue */ 167));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_register.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
@@ -7782,7 +7814,94 @@ createPage(_movieDetail.default);
 
 /***/ }),
 
+/***/ 268:
+/*!*****************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/static/font/iconfont.css ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ 29:
+/*!*******************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/mixin/handleImgandStars.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.handleImgandStars = void 0;var _util = __webpack_require__(/*! ../utils/util.js */ 30);function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var handleImgandStars = {
+  methods: {
+    //处理数据
+    formatData: function formatData(arr) {var _this = this;
+      var list = [];
+      if (arr.length) {
+        list = arr.map(function (item) {
+          var temp = _objectSpread({}, item);
+
+          temp.avatarurl = temp.avatarurl || '/static/images/avatar.png';
+          temp.purchase = !!(temp.tagList && temp.tagList.fixed.some(function (item) {return item.id === 4;}));
+          temp.stars = _this.formatStar(temp.score);
+          temp.calcTime = (0, _util.calcTime)(temp.startTime);
+          return temp;
+        });
+      }
+      return list;
+    },
+    //处理评分星星
+    formatStar: function formatStar(sc) {
+      //1分对应满星，0.5对应半星
+      var stars = new Array(5).fill('star-empty');
+      var fullStars = Math.floor(sc); //满星的个数
+      var halfStar = sc % 1 ? 'star-half' : 'star-empty'; //半星的个数，半星最多1个
+      stars.fill('star-full', 0, fullStars); //填充满星
+      if (fullStars < 5) {
+        stars[fullStars] = halfStar; //填充半星
+      }
+      var url = stars.map(function (item) {
+        return item = "/static/images/".concat(item, ".png");
+      });
+      return url;
+    } } };exports.handleImgandStars = handleImgandStars;
+
+/***/ }),
+
+/***/ 3:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 30:
 /*!******************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/utils/util.js ***!
   \******************************************************/
@@ -7869,38 +7988,7 @@ exports.getRandom = getRandom;var throttle = function throttle(func) {var interv
 
 /***/ }),
 
-/***/ 3:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 32:
+/***/ 33:
 /*!***********************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fcinema%2Fcinema"} ***!
   \***********************************************************************************/
@@ -7911,7 +7999,7 @@ module.exports = g;
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _cinema = _interopRequireDefault(__webpack_require__(/*! ./pages/cinema/cinema.vue */ 33));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _cinema = _interopRequireDefault(__webpack_require__(/*! ./pages/cinema/cinema.vue */ 34));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_cinema.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
@@ -7929,7 +8017,7 @@ createPage(_cinema.default);
 
 /***/ }),
 
-/***/ 40:
+/***/ 41:
 /*!*******************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fuser%2Fuser"} ***!
   \*******************************************************************************/
@@ -7940,13 +8028,13 @@ createPage(_cinema.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _user = _interopRequireDefault(__webpack_require__(/*! ./pages/user/user.vue */ 41));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _user = _interopRequireDefault(__webpack_require__(/*! ./pages/user/user.vue */ 42));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_user.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 48:
+/***/ 49:
 /*!*********************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fcity-select%2Fcity-select"} ***!
   \*********************************************************************************************/
@@ -7957,13 +8045,13 @@ createPage(_user.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _citySelect = _interopRequireDefault(__webpack_require__(/*! ./pages/city-select/city-select.vue */ 49));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _citySelect = _interopRequireDefault(__webpack_require__(/*! ./pages/city-select/city-select.vue */ 50));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_citySelect.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 54:
+/***/ 55:
 /*!*******************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/utils/citys.js ***!
   \*******************************************************/
@@ -12853,7 +12941,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.citys = vo
 
 /***/ }),
 
-/***/ 57:
+/***/ 58:
 /*!*********************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fsearch-page%2Fsearch-page"} ***!
   \*********************************************************************************************/
@@ -12864,13 +12952,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.citys = vo
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _searchPage = _interopRequireDefault(__webpack_require__(/*! ./pages/search-page/search-page.vue */ 58));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _searchPage = _interopRequireDefault(__webpack_require__(/*! ./pages/search-page/search-page.vue */ 59));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_searchPage.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 65:
+/***/ 66:
 /*!*******************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fvideo-page%2Fvideo-page"} ***!
   \*******************************************************************************************/
@@ -12881,13 +12969,13 @@ createPage(_searchPage.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _videoPage = _interopRequireDefault(__webpack_require__(/*! ./pages/video-page/video-page.vue */ 66));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _videoPage = _interopRequireDefault(__webpack_require__(/*! ./pages/video-page/video-page.vue */ 67));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_videoPage.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 73:
+/***/ 74:
 /*!*******************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fabout-page%2Fabout-page"} ***!
   \*******************************************************************************************/
@@ -12898,25 +12986,8 @@ createPage(_videoPage.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _aboutPage = _interopRequireDefault(__webpack_require__(/*! ./pages/about-page/about-page.vue */ 74));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _aboutPage = _interopRequireDefault(__webpack_require__(/*! ./pages/about-page/about-page.vue */ 75));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_aboutPage.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
-
-/***/ }),
-
-/***/ 79:
-/*!*****************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fbuy-snack%2Fbuy-snack"} ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _buySnack = _interopRequireDefault(__webpack_require__(/*! ./pages/buy-snack/buy-snack.vue */ 80));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_buySnack.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
@@ -13872,7 +13943,24 @@ var index_esm = {
 
 /***/ }),
 
-/***/ 87:
+/***/ 80:
+/*!*****************************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fbuy-snack%2Fbuy-snack"} ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _buySnack = _interopRequireDefault(__webpack_require__(/*! ./pages/buy-snack/buy-snack.vue */ 81));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_buySnack.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 88:
 /*!*******************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fbuy-ticket%2Fbuy-ticket"} ***!
   \*******************************************************************************************/
@@ -13883,7 +13971,7 @@ var index_esm = {
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _buyTicket = _interopRequireDefault(__webpack_require__(/*! ./pages/buy-ticket/buy-ticket.vue */ 88));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _buyTicket = _interopRequireDefault(__webpack_require__(/*! ./pages/buy-ticket/buy-ticket.vue */ 89));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_buyTicket.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
@@ -13902,7 +13990,7 @@ var _createClass = function () {function a(e, c) {for (var b = 0; b < c.length; 
 
 /***/ }),
 
-/***/ 95:
+/***/ 96:
 /*!*************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fcinema-detail%2Fcinema-detail"} ***!
   \*************************************************************************************************/
@@ -13913,7 +14001,7 @@ var _createClass = function () {function a(e, c) {for (var b = 0; b < c.length; 
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _cinemaDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/cinema-detail/cinema-detail.vue */ 96));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _cinemaDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/cinema-detail/cinema-detail.vue */ 97));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_cinemaDetail.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 

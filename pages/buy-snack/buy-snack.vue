@@ -21,7 +21,7 @@
 	  <view class='phone section'>
 	    手机号 136××××3590
 	  </view>
-	  <view class='payment-btn' bindtap='payment'>提交订单</view>
+	  <view class='payment-btn' @click='payment'>提交订单</view>
 	</view>
 </template>
 
@@ -98,22 +98,20 @@
   background: #f5f5f5;
   color: #666;
   overflow: auto;
-}
-
-.section {
-  margin: 20rpx 0;
-  background: #fff;
-  border: 1px solid #eee;
-}
-
-.section .box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30rpx 30rpx 30rpx 0;
-  margin-left: 30rpx;
-  border-bottom: 1px solid #f0f0f0;
-  font-size: 30rpx;
+  .section {
+    margin: 20rpx 0;
+    background: #fff;
+    border: 1px solid #eee;
+  }
+  .section .box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30rpx 30rpx 30rpx 0;
+    margin-left: 30rpx;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 30rpx;
+  }
 }
 
 .snack-box .snack {

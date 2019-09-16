@@ -8,6 +8,7 @@
 	qqmapsdk = new QQMapWX({
 		key: 'MH2BZ-4WTK3-2D63K-YZRHP-HM537-HHBD3'
 	});
+	import './static/font/iconfont.css'
 	export default {
 		onLaunch: function() {
 			this.initPage()
@@ -71,6 +72,7 @@
 </script>
 
 <style lang="scss">
+	// 公有样式
 	// @import './static/font/iconfont.css'
 	.line-ellipsis {
 		text-overflow: ellipsis;

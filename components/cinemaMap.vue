@@ -17,9 +17,14 @@
 		props:{
 			cinemaData:Object
 		},
-		computed:{
-			url(){
-				return `/pages/cinema-map/cinema-map?latitude=${this.cinemaData.lat}&longitude=${this.cinemaData.lng}&nm=${this.cinemaData.nm}&addr=${this.cinemaData.addr}`
+		data(){
+			return {
+				url:null
+			}
+		},
+		watch:{
+			cinemaData(){
+				this.url = `/pages/cinema-map/cinema-map?latitude=${this.cinemaData.lat}&longitude=${this.cinemaData.lng}&nm=${this.cinemaData.nm}&addr=${this.cinemaData.addr}`
 			}
 		}
 	}

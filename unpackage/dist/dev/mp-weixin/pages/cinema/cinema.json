@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "影院",
-  "enablePullDownRefresh": true,
   "usingComponents": {
     "cinema-section": "/components/cinemaSection",
     "empty": "/components/empty",

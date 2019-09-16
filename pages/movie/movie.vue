@@ -28,7 +28,7 @@
 			<view v-show="switchItem===1">
 				<view class='most-expected' v-if='mostExpectedList.length'>
 					<view class='title'>近期最受期待</view>
-					<scroll-view class='scroll-view_H' scroll-x bindscrolltolower='lower'>
+					<scroll-view class='scroll-view_H' scroll-x @scrolltolower='lower'>
 						<block v-for="(movie,index) in mostExpectedList" :key='movie.id'>
 							<navigator :url="movie.url" class='expected-item'>
 								<image :src='movie.img' class='poster'></image>
@@ -63,7 +63,7 @@
 	export default {
 		components: {
 			movieSection,
-			loadingMore,
+			loadingMore
 		},
 		data() {
 			return {
@@ -75,12 +75,9 @@
 					}
 				],
 				switchItem: 0,
-				switchItem: 0, //默认选择‘正在热映’
-				//‘热映’数据
 				movieList0: [],
 				movieIds0: [],
 				loadComplete0: false, //‘正在上映’数据是否加载到最后一条
-				//‘待映’数据
 				mostExpectedList: [],
 				movieList1: [],
 				movieIds1: [],
@@ -107,7 +104,7 @@
 					this.getComing()
 				}
 			},
-			getComing() {
+			getComing(index = 0) {
 				request('/ajax/mostExpected?limit=10&offset=0&token=').then(res => {
 					uni.hideLoading()
 					let mostExpectedList = this.formatImgUrl(res[1].data.coming, true)
@@ -115,6 +112,15 @@
 						item.url = `/pages/movie-detail/movie-detail?movieId=${item.id}`
 					})
 					this.mostExpectedList = mostExpectedList
+					if(index === 1){
+						if(res[1].statusCode === 200){
+							uni.stopPullDownRefresh();
+							uni.showToast({
+								title:'刷新成功',
+								duration:2000
+							})
+						}
+					}
 				})
 
 				request('/ajax/comingList?token=&limit=10').then(res => {
@@ -145,11 +151,7 @@
 			initPage() {
 				this.firstLoad()
 			},
-			//第一次加载页面时请求‘正在热映的数据’
-			firstLoad() {
-				uni.showLoading({
-					title: '正在加载...'
-				})
+			getFrirstList(index = 0){
 				request('/ajax/movieOnInfoList?token=').then(res => {
 					this.movieList0 = this.formatImgUrl(res[1].data.movieList)
 					uni.hideLoading()
@@ -157,7 +159,23 @@
 					if (res[1].data.movieList.length >= res[1].data.movieIds.length) {
 						this.loadComplete0 = true
 					}
+					if(index === 1){
+						if(res[1].statusCode === 200){
+							uni.stopPullDownRefresh();
+							uni.showToast({
+								title:'刷新成功',
+								duration:2000
+							})
+						}
+					}
 				})
+			},
+			//第一次加载页面时请求‘正在热映的数据’
+			firstLoad() {
+				uni.showLoading({
+					title: '正在加载...'
+				})
+				this.getFrirstList()
 			},
 			//上拉触底刷新的加载函数
 			ReachBottom(list, ids, complete, item) {
@@ -186,7 +204,7 @@
 				}
 				request(`/ajax/mostExpected?limit=10&offset=${length}&token=`).then(res => {
 					this.tmostExpectedList = mostExpectedList.concat(this.formatImgUrl(res[1].data.coming, true))
-					this.loadComplete2 = !res.data.paging.hasMore || !res[1].data.coming.length //当返回的数组长度为0时也认为数据请求完毕
+					this.loadComplete2 = !res[1].data.paging.hasMore || !res[1].data.coming.length //当返回的数组长度为0时也认为数据请求完毕
 				})
 			},
 		},
@@ -210,6 +228,15 @@
 				this.ReachBottom(movieList1, movieIds1, loadComplete1, 1)
 			}
 		},
+		onPullDownRefresh() {
+		        const {switchItem} = this
+				if(switchItem === 0){
+					this.getFrirstList(1)
+				}else{
+					this.getComing(1)
+				}
+				 
+		    },
 		//转发
 		onShareAppMessage(res) {
 			return {

@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "搜索",
   "usingComponents": {
     "empty": "/components/empty",
     "cinema-section": "/components/cinemaSection"

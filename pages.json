@@ -9,13 +9,14 @@
 		},
 		{
 		    "path" : "pages/movie-detail/movie-detail",
-		    "style" : {}
+			"style":{
+				"navigationBarTitleText":"影片详情"
+			}
 		},
 		{
 			"path": "pages/cinema/cinema",
 			"style": {
-				"navigationBarTitleText": "影院",
-				"enablePullDownRefresh": true //开启下拉刷新
+				"navigationBarTitleText": "影院"
 			}
 		},
 
@@ -28,59 +29,99 @@
 		}
         ,{
             "path" : "pages/city-select/city-select",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "城市选择"
+            }
         }
         ,{
             "path" : "pages/search-page/search-page",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "搜索"
+            }
         }
         ,{
             "path" : "pages/video-page/video-page",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "预告片"
+            }
         }
         ,{
             "path" : "pages/about-page/about-page",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "关于"
+            }
         }
         ,{
             "path" : "pages/buy-snack/buy-snack",
-            "style" : {}
+           "style": {
+           	"navigationBarTitleText": "提交订单"
+           }
         }
         ,{
             "path" : "pages/buy-ticket/buy-ticket",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "确认订单"
+            }
         }
         ,{
             "path" : "pages/cinema-detail/cinema-detail",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "影院"
+            }
         }
         ,{
             "path" : "pages/cinema-map/cinema-map",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "位置信息"
+            }
         }
         ,{
             "path" : "pages/comment-page/comment-page",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "观众评论"
+            }
         }
         ,{
             "path" : "pages/movie-order/movie-order",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "电影订单"
+            }
         }
         ,{
             "path" : "pages/movie-order-detail/movie-order-detail",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "订单详情"
+            }
         }
         ,{
             "path" : "pages/select-cinema/select-cinema",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "影院"
+            }
         }
         ,{
             "path" : "pages/snack-order/snack-order",
-            "style" : {}
+           "style": {
+           	"navigationBarTitleText": "小吃订单"
+           }
         }
         ,{
             "path" : "pages/snack-page/snack-page",
-            "style" : {}
+            "style": {
+            	"navigationBarTitleText": "观影套餐"
+            }
+        }
+        ,{
+            "path" : "pages/login/login",
+            "style": {
+            	"navigationBarTitleText": "登陆"
+            }
+        }
+        ,{
+            "path" : "pages/register/register",
+            "style": {
+            	"navigationBarTitleText": "注册"
+            }
         }
     ],
 	"tabBar": {
@@ -108,7 +149,6 @@
 	},
 	"globalStyle": {
 		"navigationBarTextStyle": "light",
-		"navigationBarBackgroundColor": "#e54847",
-		"backgroundColor": "#e54847"
+		"navigationBarBackgroundColor": "#e54847"
 	}
 }

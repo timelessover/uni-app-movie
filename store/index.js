@@ -7,7 +7,6 @@ const store = new Vuex.Store({
 	state: {
 		userLocation: null, // 用户的位置信
 		selectCity: null,  // 用户选择城市
-		days:null
 	},
 	getters:{
 		
@@ -21,9 +20,7 @@ const store = new Vuex.Store({
 		},
 	},
 	actions: {
-		// getLocation(context){
-		// 	context.commit('')
-		// }
+		
 	}
 });
 
