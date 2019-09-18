@@ -24,7 +24,7 @@
 		</view>
 		<view>
 			<view v-if='timeList.length'>
-				<view class='item' v-for='(item,index) in timeList' :key='item.tm' @click='buyTicket(item)'>
+				<view class='item' v-for='(item,index) in timeList' :key='item.tm' @click='seatChoose(item)'>
 					<view class='time-block box'>
 						<view class='begin'>{{item.tm}}</view>
 						<view class='end'>{{item.endTime}} 散场</view>
@@ -163,8 +163,7 @@
 					url: `/pages/snack-page/snack-page?paramsStr=${paramsStr}`,
 				})
 			},
-			//购票
-			buyTicket(info) {
+			seatChoose(info){
 				const {
 					movie,
 					cinemaId,
@@ -181,31 +180,15 @@
 					lang: info.lang + info.tp, //语言
 					time: `${info.dt} ${info.tm}`, //时间
 					price: (info.vipPrice && info.vipPrice * 1 + 10) || 37, //票价
-					seat: `${getRandom(1, 21,true)}排${getRandom(1, 21,true)}座`, //座位
 					Vcode: getRandom(100000, 999999), //模拟6位数的验证码
 					flowNumber: getRandom(100000000, 999999999), //模拟9位数的流水号,
 					orderId: getRandom(1000000000, 9999999999), //模拟10位数的订单号,
-					cinemaData: cinemaDetail.cinemaData //影院信息
+					cinemaData: cinemaDetail.cinemaData ,//影院信息
+					seqNo:info.seqNo
 				})
-				// 只提示一次
-				if (first) {
-					uni.showModal({
-						title: '提示',
-						content: '此小程序仅为学习，不会产生任何支付',
-						success: (res) => {
-							this.first = false
-							if (res.confirm) {
-								uni.navigateTo({
-									url: `/pages/buy-ticket/buy-ticket?paramsStr=${paramsStr}`,
-								})
-							}
-						}
-					})
-				} else {
-					uni.navigateTo({
-						url: `/pages/buy-ticket/buy-ticket?paramsStr=${paramsStr}`,
-					})
-				}
+				uni.navigateTo({
+					url: `/pages/seat-choose/seat-choose?info=${paramsStr}`,
+				});
 			},
 			//处理散场时间
 			createEndTime(arr, dur) {

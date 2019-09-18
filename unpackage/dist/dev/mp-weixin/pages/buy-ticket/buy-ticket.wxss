@@ -106,7 +106,7 @@
   font-size: 36rpx;
 }
 .footer .yuan {
-  font-size: 20rpx;
+  font-size: 40rpx;
 }
 .payment-btn {
   height: 2.5em;
@@ -117,5 +117,16 @@
   text-align: center;
   font-size: 34rpx;
   border-radius: 8rpx;
+}
+.seats-block {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.seats-block .item {
+    padding-right: 10rpx;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 

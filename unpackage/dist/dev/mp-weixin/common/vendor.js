@@ -12,10 +12,10 @@
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 5));
 
-var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 13));
+var _store = _interopRequireDefault(__webpack_require__(/*! ./store */ 14));
 
 
-var _request = _interopRequireDefault(__webpack_require__(/*! ./utils/request.js */ 14));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var _request = _interopRequireDefault(__webpack_require__(/*! ./utils/request.js */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 
 _vue.default.prototype.$store = _store.default;
 
@@ -1509,7 +1509,37 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 104:
+/***/ 10:
+/*!**************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/static/libs/qqmap-wx-jssdk.min.js ***!
+  \**************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var _createClass = function () {function a(e, c) {for (var b = 0; b < c.length; b++) {var d = c[b];d.enumerable = d.enumerable || false;d.configurable = true;if ("value" in d) {d.writable = true;}Object.defineProperty(e, d.key, d);}}return function (d, b, c) {if (b) {a(d.prototype, b);}if (c) {a(d, c);}return d;};}();function _classCallCheck(a, b) {if (!(a instanceof b)) {throw new TypeError("Cannot call a class as a function");}}var ERROR_CONF = { KEY_ERR: 311, KEY_ERR_MSG: "key格式错误", PARAM_ERR: 310, PARAM_ERR_MSG: "请求参数信息有误", SYSTEM_ERR: 600, SYSTEM_ERR_MSG: "系统错误", WX_ERR_CODE: 1000, WX_OK_CODE: 200 };var BASE_URL = "https://apis.map.qq.com/ws/";var URL_SEARCH = BASE_URL + "place/v1/search";var URL_SUGGESTION = BASE_URL + "place/v1/suggestion";var URL_GET_GEOCODER = BASE_URL + "geocoder/v1/";var URL_CITY_LIST = BASE_URL + "district/v1/list";var URL_AREA_LIST = BASE_URL + "district/v1/getchildren";var URL_DISTANCE = BASE_URL + "distance/v1/";var Utils = { location2query: function location2query(c) {if (typeof c == "string") {return c;}var b = "";for (var a = 0; a < c.length; a++) {var e = c[a];if (!!b) {b += ";";}if (e.location) {b = b + e.location.lat + "," + e.location.lng;}if (e.latitude && e.longitude) {b = b + e.latitude + "," + e.longitude;}}return b;}, getWXLocation: function getWXLocation(c, b, a) {wx.getLocation({ type: "gcj02", success: c, fail: b, complete: a });}, getLocationParam: function getLocationParam(b) {if (typeof b == "string") {var a = b.split(",");if (a.length === 2) {b = { latitude: b.split(",")[0], longitude: b.split(",")[1] };} else {b = {};}}return b;}, polyfillParam: function polyfillParam(a) {a.success = a.success || function () {};a.fail = a.fail || function () {};a.complete = a.complete || function () {};}, checkParamKeyEmpty: function checkParamKeyEmpty(c, b) {if (!c[b]) {var a = this.buildErrorConfig(ERROR_CONF.PARAM_ERR, ERROR_CONF.PARAM_ERR_MSG + b + "参数格式有误");c.fail(a);c.complete(a);return true;}return false;}, checkKeyword: function checkKeyword(a) {return !this.checkParamKeyEmpty(a, "keyword");}, checkLocation: function checkLocation(c) {var a = this.getLocationParam(c.location);if (!a || !a.latitude || !a.longitude) {var b = this.buildErrorConfig(ERROR_CONF.PARAM_ERR, ERROR_CONF.PARAM_ERR_MSG + " location参数格式有误");c.fail(b);c.complete(b);return false;}return true;}, buildErrorConfig: function buildErrorConfig(a, b) {return { status: a, message: b };}, buildWxRequestConfig: function buildWxRequestConfig(c, a) {var b = this;a.header = { "content-type": "application/json" };a.method = "GET";a.success = function (d) {var e = d.data;if (e.status === 0) {c.success(e);} else {c.fail(e);}};a.fail = function (d) {d.statusCode = ERROR_CONF.WX_ERR_CODE;c.fail(b.buildErrorConfig(ERROR_CONF.WX_ERR_CODE, result.errMsg));};a.complete = function (d) {var e = +d.statusCode;switch (e) {case ERROR_CONF.WX_ERR_CODE:c.complete(b.buildErrorConfig(ERROR_CONF.WX_ERR_CODE, d.errMsg));break;case ERROR_CONF.WX_OK_CODE:var f = d.data;if (f.status === 0) {c.complete(f);} else {c.complete(b.buildErrorConfig(f.status, f.message));}break;default:c.complete(b.buildErrorConfig(ERROR_CONF.SYSTEM_ERR, ERROR_CONF.SYSTEM_ERR_MSG));}};return a;}, locationProcess: function locationProcess(f, e, c, a) {var d = this;c = c || function (g) {g.statusCode = ERROR_CONF.WX_ERR_CODE;f.fail(d.buildErrorConfig(ERROR_CONF.WX_ERR_CODE, g.errMsg));};a = a || function (g) {if (g.statusCode == ERROR_CONF.WX_ERR_CODE) {f.complete(d.buildErrorConfig(ERROR_CONF.WX_ERR_CODE, g.errMsg));}};if (!f.location) {d.getWXLocation(e, c, a);} else {if (d.checkLocation(f)) {var b = Utils.getLocationParam(f.location);e(b);}}} };var QQMapWX = function () {function b(i) {_classCallCheck(this, b);if (!i.key) {throw Error("key值不能为空");}this.key = i.key;}_createClass(b, [{ key: "search", value: function f(i) {var l = this;i = i || {};Utils.polyfillParam(i);if (!Utils.checkKeyword(i)) {return;}var k = { keyword: i.keyword, orderby: i.orderby || "_distance", page_size: i.page_size || 10, page_index: i.page_index || 1, output: "json", key: l.key };if (i.address_format) {k.address_format = i.address_format;}if (i.filter) {k.filter = i.filter;}var n = i.distance || "1000";var j = i.auto_extend || 1;var m = function m(o) {k.boundary = "nearby(" + o.latitude + "," + o.longitude + "," + n + "," + j + ")";wx.request(Utils.buildWxRequestConfig(i, { url: URL_SEARCH, data: k }));};Utils.locationProcess(i, m);} }, { key: "getSuggestion", value: function h(i) {var k = this;i = i || {};Utils.polyfillParam(i);if (!Utils.checkKeyword(i)) {return;}var j = { keyword: i.keyword, region: i.region || "全国", region_fix: i.region_fix || 0, policy: i.policy || 0, output: "json", key: k.key };wx.request(Utils.buildWxRequestConfig(i, { url: URL_SUGGESTION, data: j }));} }, { key: "reverseGeocoder", value: function a(i) {var k = this;i = i || {};Utils.polyfillParam(i);var j = { coord_type: i.coord_type || 5, get_poi: i.get_poi || 0, output: "json", key: k.key };if (i.poi_options) {j.poi_options = i.poi_options;}var l = function l(m) {j.location = m.latitude + "," + m.longitude;wx.request(Utils.buildWxRequestConfig(i, { url: URL_GET_GEOCODER, data: j }));};Utils.locationProcess(i, l);} }, { key: "geocoder", value: function g(i) {var k = this;i = i || {};Utils.polyfillParam(i);if (Utils.checkParamKeyEmpty(i, "address")) {return;}var j = { address: i.address, output: "json", key: k.key };wx.request(Utils.buildWxRequestConfig(i, { url: URL_GET_GEOCODER, data: j }));} }, { key: "getCityList", value: function c(i) {var k = this;i = i || {};Utils.polyfillParam(i);var j = { output: "json", key: k.key };
+      wx.request(Utils.buildWxRequestConfig(i, { url: URL_CITY_LIST, data: j }));} }, { key: "getDistrictByCityId", value: function d(i) {var k = this;i = i || {};Utils.polyfillParam(i);if (Utils.checkParamKeyEmpty(i, "id")) {return;}var j = { id: i.id || "", output: "json", key: k.key };wx.request(Utils.buildWxRequestConfig(i, { url: URL_AREA_LIST, data: j }));} }, { key: "calculateDistance", value: function e(i) {var k = this;i = i || {};Utils.polyfillParam(i);if (Utils.checkParamKeyEmpty(i, "to")) {return;}var j = { mode: i.mode || "walking", to: Utils.location2query(i.to), output: "json", key: k.key };var l = function l(m) {j.from = m.latitude + "," + m.longitude;wx.request(Utils.buildWxRequestConfig(i, { url: URL_DISTANCE, data: j }));};if (i.from) {i.location = i.from;}Utils.locationProcess(i, l);} }]);return b;}();module.exports = QQMapWX;
+
+/***/ }),
+
+/***/ 105:
+/*!*************************************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fcinema-detail%2Fcinema-detail"} ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _cinemaDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/cinema-detail/cinema-detail.vue */ 106));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_cinemaDetail.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 113:
 /*!*******************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fcinema-map%2Fcinema-map"} ***!
   \*******************************************************************************************/
@@ -1520,13 +1550,13 @@ uni$1;exports.default = _default;
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _cinemaMap = _interopRequireDefault(__webpack_require__(/*! ./pages/cinema-map/cinema-map.vue */ 105));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _cinemaMap = _interopRequireDefault(__webpack_require__(/*! ./pages/cinema-map/cinema-map.vue */ 114));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_cinemaMap.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 112:
+/***/ 121:
 /*!***********************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fcomment-page%2Fcomment-page"} ***!
   \***********************************************************************************************/
@@ -1537,13 +1567,30 @@ createPage(_cinemaMap.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _commentPage = _interopRequireDefault(__webpack_require__(/*! ./pages/comment-page/comment-page.vue */ 113));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _commentPage = _interopRequireDefault(__webpack_require__(/*! ./pages/comment-page/comment-page.vue */ 122));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_commentPage.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 12:
+/***/ 129:
+/*!*********************************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fmovie-order%2Fmovie-order"} ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _movieOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/movie-order/movie-order.vue */ 130));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_movieOrder.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 13:
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
   \********************************************************************/
@@ -1650,24 +1697,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 120:
-/*!*********************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fmovie-order%2Fmovie-order"} ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _movieOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/movie-order/movie-order.vue */ 121));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_movieOrder.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
-
-/***/ }),
-
-/***/ 128:
+/***/ 137:
 /*!***********************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fmovie-order-detail%2Fmovie-order-detail"} ***!
   \***********************************************************************************************************/
@@ -1678,13 +1708,13 @@ createPage(_movieOrder.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _movieOrderDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/movie-order-detail/movie-order-detail.vue */ 129));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _movieOrderDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/movie-order-detail/movie-order-detail.vue */ 138));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_movieOrderDetail.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 13:
+/***/ 14:
 /*!*******************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/store/index.js ***!
   \*******************************************************/
@@ -1722,7 +1752,7 @@ store;exports.default = _default;
 
 /***/ }),
 
-/***/ 136:
+/***/ 145:
 /*!*************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fselect-cinema%2Fselect-cinema"} ***!
   \*************************************************************************************************/
@@ -1733,13 +1763,13 @@ store;exports.default = _default;
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _selectCinema = _interopRequireDefault(__webpack_require__(/*! ./pages/select-cinema/select-cinema.vue */ 137));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _selectCinema = _interopRequireDefault(__webpack_require__(/*! ./pages/select-cinema/select-cinema.vue */ 146));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_selectCinema.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 14:
+/***/ 15:
 /*!*********************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/utils/request.js ***!
   \*********************************************************/
@@ -1763,7 +1793,7 @@ request;exports.default = _default;
 
 /***/ }),
 
-/***/ 144:
+/***/ 153:
 /*!*********************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fsnack-order%2Fsnack-order"} ***!
   \*********************************************************************************************/
@@ -1774,16 +1804,16 @@ request;exports.default = _default;
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _snackOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/snack-order/snack-order.vue */ 145));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _snackOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/snack-order/snack-order.vue */ 154));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_snackOrder.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 15:
-/*!*********************************************************************************!*\
-  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fmovie%2Fmovie"} ***!
-  \*********************************************************************************/
+/***/ 16:
+/*!*********************************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fseat-choose%2Fseat-choose"} ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1791,13 +1821,13 @@ createPage(_snackOrder.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _movie = _interopRequireDefault(__webpack_require__(/*! ./pages/movie/movie.vue */ 16));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_movie.default);
+var _seatChoose = _interopRequireDefault(__webpack_require__(/*! ./pages/seat-choose/seat-choose.vue */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_seatChoose.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 152:
+/***/ 161:
 /*!*******************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fsnack-page%2Fsnack-page"} ***!
   \*******************************************************************************************/
@@ -1808,13 +1838,13 @@ createPage(_movie.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _snackPage = _interopRequireDefault(__webpack_require__(/*! ./pages/snack-page/snack-page.vue */ 153));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _snackPage = _interopRequireDefault(__webpack_require__(/*! ./pages/snack-page/snack-page.vue */ 162));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_snackPage.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 160:
+/***/ 169:
 /*!*********************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
   \*********************************************************************************/
@@ -1825,13 +1855,13 @@ createPage(_snackPage.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ 161));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ 170));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_login.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 166:
+/***/ 177:
 /*!***************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fregister%2Fregister"} ***!
   \***************************************************************************************/
@@ -1842,7 +1872,7 @@ createPage(_login.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _register = _interopRequireDefault(__webpack_require__(/*! ./pages/register/register.vue */ 167));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _register = _interopRequireDefault(__webpack_require__(/*! ./pages/register/register.vue */ 178));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_register.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
@@ -7797,7 +7827,942 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 23:
+/***/ 24:
+/*!*********************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fmovie%2Fmovie"} ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _movie = _interopRequireDefault(__webpack_require__(/*! ./pages/movie/movie.vue */ 25));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_movie.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 279:
+/*!******************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/utils/seat.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.seat = void 0;var seat = {
+  "image": {
+    "adReport": null,
+    "displayAd": false,
+    "doIconRain": false,
+    "iconRainTriggerMillis": 1000,
+    "iconRains": {
+      "1": "http://p0.meituan.net/moviemachine/035839fff8be031ad4b62eed304679be212491.png",
+      "2": "http://p0.meituan.net/moviemachine/4b335e4757f4f8a749a1de4b1ee7243a216478.png",
+      "3": "http://p0.meituan.net/moviemachine/d160a1b196b44e1fcb3ecdc761a3dabb212080.png" },
+
+    "seatLegends": [
+    {
+      "legendIcon": "http://p1.meituan.net/movie/9dfff6fd525a7119d44e5734ab0e9fb41244.png",
+      "legendName": "可选" },
+
+    {
+      "legendIcon": "http://p1.meituan.net/movie/bdb0531259ae1188b9398520f9692cbd1249.png",
+      "legendName": "不可选" },
+
+    {
+      "legendIcon": "http://p0.meituan.net/movie/585588bd86828ed54eed828dcb89bfdd1401.png",
+      "legendName": "已选" }],
+
+
+    "selectSeatImages": [],
+    "selectedImages": [],
+    "soldImages": [] },
+
+  "lastSelectedSeat": {
+    "selectedRegionId": "",
+    "selectedSeatType": "",
+    "selectedSeats": "" },
+
+  "recommendation": {
+    "bestRecommendation": {
+      "bestFive": {
+        "seatDesc": {
+          "img": "http://p0.meituan.net/movie/4d5558c36804180ca9a2355c2f16d2b05701957.png",
+          "remind": "赚到了，最受欢迎的位置！" },
+
+        "seats": [
+        {
+          "columnId": "3",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" },
+
+        {
+          "columnId": "4",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" },
+
+        {
+          "columnId": "5",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" },
+
+        {
+          "columnId": "6",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" },
+
+        {
+          "columnId": "7",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" }] },
+
+
+
+      "bestFour": {
+        "seatDesc": {
+          "img": "http://p0.meituan.net/movie/4d5558c36804180ca9a2355c2f16d2b05701957.png",
+          "remind": "赚到了，最受欢迎的位置！" },
+
+        "seats": [
+        {
+          "columnId": "4",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" },
+
+        {
+          "columnId": "5",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" },
+
+        {
+          "columnId": "6",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" },
+
+        {
+          "columnId": "7",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" }] },
+
+
+
+      "bestOne": {
+        "seatDesc": {
+          "img": "http://p0.meituan.net/movie/4d5558c36804180ca9a2355c2f16d2b05701957.png",
+          "remind": "赚到了，最受欢迎的位置！" },
+
+        "seats": [
+        {
+          "columnId": "5",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" }] },
+
+
+
+      "bestThree": {
+        "seatDesc": {
+          "img": "http://p0.meituan.net/movie/4d5558c36804180ca9a2355c2f16d2b05701957.png",
+          "remind": "赚到了，最受欢迎的位置！" },
+
+        "seats": [
+        {
+          "columnId": "4",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" },
+
+        {
+          "columnId": "5",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" },
+
+        {
+          "columnId": "6",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" }] },
+
+
+
+      "bestTwo": {
+        "seatDesc": {
+          "img": "http://p0.meituan.net/movie/4d5558c36804180ca9a2355c2f16d2b05701957.png",
+          "remind": "赚到了，最受欢迎的位置！" },
+
+        "seats": [
+        {
+          "columnId": "5",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" },
+
+        {
+          "columnId": "6",
+          "rowId": "4",
+          "rowNum": 4,
+          "sectionId": "1" }] } },
+
+
+
+
+    "isShowRecommendation": 1 },
+
+  "regions": [
+  {
+    "columnSize": 10,
+    "regionId": "1",
+    "regionName": "6号厅",
+    "rowSize": 8,
+    "rows": [
+    {
+      "rowId": "1",
+      "rowNum": 1,
+      "seats": [
+      {
+        "columnId": "1",
+        "rowId": "1",
+        "seatNo": "7,9,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "2",
+        "rowId": "1",
+        "seatNo": "7,8,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "3",
+        "rowId": "1",
+        "seatNo": "7,7,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "4",
+        "rowId": "1",
+        "seatNo": "7,6,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "5",
+        "rowId": "1",
+        "seatNo": "7,5,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "6",
+        "rowId": "1",
+        "seatNo": "7,4,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "7",
+        "rowId": "1",
+        "seatNo": "7,3,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "8",
+        "rowId": "1",
+        "seatNo": "7,2,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "9",
+        "rowId": "1",
+        "seatNo": "7,1,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "10",
+        "rowId": "1",
+        "seatNo": "7,0,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" }] },
+
+
+
+    {
+      "rowId": "2",
+      "rowNum": 2,
+      "seats": [
+      {
+        "columnId": "1",
+        "rowId": "2",
+        "seatNo": "6,9,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "2",
+        "rowId": "2",
+        "seatNo": "6,8,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "3",
+        "rowId": "2",
+        "seatNo": "6,7,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "4",
+        "rowId": "2",
+        "seatNo": "6,6,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "5",
+        "rowId": "2",
+        "seatNo": "6,5,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "6",
+        "rowId": "2",
+        "seatNo": "6,4,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "7",
+        "rowId": "2",
+        "seatNo": "6,3,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "8",
+        "rowId": "2",
+        "seatNo": "6,2,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "9",
+        "rowId": "2",
+        "seatNo": "6,1,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "10",
+        "rowId": "2",
+        "seatNo": "6,0,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" }] },
+
+
+
+    {
+      "rowId": "3",
+      "rowNum": 3,
+      "seats": [
+      {
+        "columnId": "1",
+        "rowId": "3",
+        "seatNo": "5,9,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "2",
+        "rowId": "3",
+        "seatNo": "5,8,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "3",
+        "rowId": "3",
+        "seatNo": "5,7,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "4",
+        "rowId": "3",
+        "seatNo": "5,6,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "5",
+        "rowId": "3",
+        "seatNo": "5,5,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "6",
+        "rowId": "3",
+        "seatNo": "5,4,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "7",
+        "rowId": "3",
+        "seatNo": "5,3,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "8",
+        "rowId": "3",
+        "seatNo": "5,2,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "9",
+        "rowId": "3",
+        "seatNo": "5,1,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "10",
+        "rowId": "3",
+        "seatNo": "5,0,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" }] },
+
+
+
+    {
+      "rowId": "4",
+      "rowNum": 4,
+      "seats": [
+      {
+        "columnId": "1",
+        "rowId": "4",
+        "seatNo": "4,9,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "2",
+        "rowId": "4",
+        "seatNo": "4,8,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "3",
+        "rowId": "4",
+        "seatNo": "4,7,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "4",
+        "rowId": "4",
+        "seatNo": "4,6,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "5",
+        "rowId": "4",
+        "seatNo": "4,5,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "6",
+        "rowId": "4",
+        "seatNo": "4,4,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "7",
+        "rowId": "4",
+        "seatNo": "4,3,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "8",
+        "rowId": "4",
+        "seatNo": "4,2,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "9",
+        "rowId": "4",
+        "seatNo": "4,1,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "10",
+        "rowId": "4",
+        "seatNo": "4,0,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" }] },
+
+
+
+    {
+      "rowId": "5",
+      "rowNum": 5,
+      "seats": [
+      {
+        "columnId": "1",
+        "rowId": "5",
+        "seatNo": "3,9,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "2",
+        "rowId": "5",
+        "seatNo": "3,8,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "3",
+        "rowId": "5",
+        "seatNo": "3,7,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "4",
+        "rowId": "5",
+        "seatNo": "3,6,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "5",
+        "rowId": "5",
+        "seatNo": "3,5,0000000001",
+        "seatStatus": 3,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "6",
+        "rowId": "5",
+        "seatNo": "3,4,0000000001",
+        "seatStatus": 3,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "7",
+        "rowId": "5",
+        "seatNo": "3,3,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "8",
+        "rowId": "5",
+        "seatNo": "3,2,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "9",
+        "rowId": "5",
+        "seatNo": "3,1,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "10",
+        "rowId": "5",
+        "seatNo": "3,0,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" }] },
+
+
+
+    {
+      "rowId": "6",
+      "rowNum": 6,
+      "seats": [
+      {
+        "columnId": "1",
+        "rowId": "6",
+        "seatNo": "2,9,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "2",
+        "rowId": "6",
+        "seatNo": "2,8,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "3",
+        "rowId": "6",
+        "seatNo": "2,7,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "4",
+        "rowId": "6",
+        "seatNo": "2,6,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "5",
+        "rowId": "6",
+        "seatNo": "2,5,0000000001",
+        "seatStatus": 3,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "6",
+        "rowId": "6",
+        "seatNo": "2,4,0000000001",
+        "seatStatus": 3,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "7",
+        "rowId": "6",
+        "seatNo": "2,3,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "8",
+        "rowId": "6",
+        "seatNo": "2,2,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "9",
+        "rowId": "6",
+        "seatNo": "2,1,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "10",
+        "rowId": "6",
+        "seatNo": "2,0,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" }] },
+
+
+
+    {
+      "rowId": "7",
+      "rowNum": 7,
+      "seats": [
+      {
+        "columnId": "1",
+        "rowId": "7",
+        "seatNo": "1,9,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "2",
+        "rowId": "7",
+        "seatNo": "1,8,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "3",
+        "rowId": "7",
+        "seatNo": "1,7,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "4",
+        "rowId": "7",
+        "seatNo": "1,6,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "5",
+        "rowId": "7",
+        "seatNo": "1,5,0000000001",
+        "seatStatus": 3,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "6",
+        "rowId": "7",
+        "seatNo": "1,4,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "7",
+        "rowId": "7",
+        "seatNo": "1,3,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "8",
+        "rowId": "7",
+        "seatNo": "1,2,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "9",
+        "rowId": "7",
+        "seatNo": "1,1,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "10",
+        "rowId": "7",
+        "seatNo": "1,0,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" }] },
+
+
+
+    {
+      "rowId": "8",
+      "rowNum": 8,
+      "seats": [
+      {
+        "columnId": "1",
+        "rowId": "8",
+        "seatNo": "0,9,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "2",
+        "rowId": "8",
+        "seatNo": "0,8,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "3",
+        "rowId": "8",
+        "seatNo": "0,7,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "4",
+        "rowId": "8",
+        "seatNo": "0,6,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "5",
+        "rowId": "8",
+        "seatNo": "0,5,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "6",
+        "rowId": "8",
+        "seatNo": "0,4,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "7",
+        "rowId": "8",
+        "seatNo": "0,3,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "8",
+        "rowId": "8",
+        "seatNo": "0,2,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "9",
+        "rowId": "8",
+        "seatNo": "0,1,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" },
+
+      {
+        "columnId": "10",
+        "rowId": "8",
+        "seatNo": "0,0,0000000001",
+        "seatStatus": 1,
+        "seatType": "N",
+        "sectionId": "1" }] }] }],
+
+
+
+
+
+
+  "section": {
+    "1": {
+      "index": 1,
+      "sectionActivity": "",
+      "sectionIcon": "http://p0.meituan.net/movie/749e0c80173858e030e323798b7f6325405.png",
+      "sectionLoverImage": "http://p1.meituan.net/movie/c76844b360d247a7d484336078e6b667692.png",
+      "sectionName": "6号厅",
+      "sectionNormalImage": "http://p0.meituan.net/movie/29e5bc58f549052c599f79262946ea5b425.png",
+      "sectionPrice": "" } } };exports.seat = seat;
+
+/***/ }),
+
+/***/ 3:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 32:
 /*!***********************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fmovie-detail%2Fmovie-detail"} ***!
   \***********************************************************************************************/
@@ -7808,24 +8773,13 @@ internalMixin(Vue);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _movieDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/movie-detail/movie-detail.vue */ 24));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _movieDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/movie-detail/movie-detail.vue */ 33));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_movieDetail.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 268:
-/*!*****************************************************************!*\
-  !*** C:/Users/admin/Desktop/movie-app/static/font/iconfont.css ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ 29:
+/***/ 38:
 /*!*******************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/mixin/handleImgandStars.js ***!
   \*******************************************************************/
@@ -7833,7 +8787,7 @@ createPage(_movieDetail.default);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.handleImgandStars = void 0;var _util = __webpack_require__(/*! ../utils/util.js */ 30);function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+Object.defineProperty(exports, "__esModule", { value: true });exports.handleImgandStars = void 0;var _util = __webpack_require__(/*! ../utils/util.js */ 39);function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 var handleImgandStars = {
   methods: {
     //处理数据
@@ -7870,38 +8824,7 @@ var handleImgandStars = {
 
 /***/ }),
 
-/***/ 3:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 30:
+/***/ 39:
 /*!******************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/utils/util.js ***!
   \******************************************************/
@@ -7988,23 +8911,6 @@ exports.getRandom = getRandom;var throttle = function throttle(func) {var interv
 
 /***/ }),
 
-/***/ 33:
-/*!***********************************************************************************!*\
-  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fcinema%2Fcinema"} ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _cinema = _interopRequireDefault(__webpack_require__(/*! ./pages/cinema/cinema.vue */ 34));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_cinema.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
-
-/***/ }),
-
 /***/ 4:
 /*!***************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/pages.json ***!
@@ -8017,7 +8923,24 @@ createPage(_cinema.default);
 
 /***/ }),
 
-/***/ 41:
+/***/ 42:
+/*!***********************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fcinema%2Fcinema"} ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _cinema = _interopRequireDefault(__webpack_require__(/*! ./pages/cinema/cinema.vue */ 43));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_cinema.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 50:
 /*!*******************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fuser%2Fuser"} ***!
   \*******************************************************************************/
@@ -8028,13 +8951,13 @@ createPage(_cinema.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _user = _interopRequireDefault(__webpack_require__(/*! ./pages/user/user.vue */ 42));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _user = _interopRequireDefault(__webpack_require__(/*! ./pages/user/user.vue */ 51));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_user.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 49:
+/***/ 58:
 /*!*********************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fcity-select%2Fcity-select"} ***!
   \*********************************************************************************************/
@@ -8045,13 +8968,13 @@ createPage(_user.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _citySelect = _interopRequireDefault(__webpack_require__(/*! ./pages/city-select/city-select.vue */ 50));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _citySelect = _interopRequireDefault(__webpack_require__(/*! ./pages/city-select/city-select.vue */ 59));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_citySelect.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 55:
+/***/ 64:
 /*!*******************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/utils/citys.js ***!
   \*******************************************************/
@@ -12941,7 +13864,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.citys = vo
 
 /***/ }),
 
-/***/ 58:
+/***/ 67:
 /*!*********************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fsearch-page%2Fsearch-page"} ***!
   \*********************************************************************************************/
@@ -12952,13 +13875,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.citys = vo
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _searchPage = _interopRequireDefault(__webpack_require__(/*! ./pages/search-page/search-page.vue */ 59));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _searchPage = _interopRequireDefault(__webpack_require__(/*! ./pages/search-page/search-page.vue */ 68));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_searchPage.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 66:
+/***/ 75:
 /*!*******************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fvideo-page%2Fvideo-page"} ***!
   \*******************************************************************************************/
@@ -12969,25 +13892,8 @@ createPage(_searchPage.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _videoPage = _interopRequireDefault(__webpack_require__(/*! ./pages/video-page/video-page.vue */ 67));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _videoPage = _interopRequireDefault(__webpack_require__(/*! ./pages/video-page/video-page.vue */ 76));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_videoPage.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
-
-/***/ }),
-
-/***/ 74:
-/*!*******************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fabout-page%2Fabout-page"} ***!
-  \*******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _aboutPage = _interopRequireDefault(__webpack_require__(/*! ./pages/about-page/about-page.vue */ 75));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_aboutPage.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
@@ -13943,7 +14849,24 @@ var index_esm = {
 
 /***/ }),
 
-/***/ 80:
+/***/ 83:
+/*!*******************************************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fabout-page%2Fabout-page"} ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _aboutPage = _interopRequireDefault(__webpack_require__(/*! ./pages/about-page/about-page.vue */ 84));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_aboutPage.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
+
+/***/ }),
+
+/***/ 89:
 /*!*****************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fbuy-snack%2Fbuy-snack"} ***!
   \*****************************************************************************************/
@@ -13954,13 +14877,24 @@ var index_esm = {
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _buySnack = _interopRequireDefault(__webpack_require__(/*! ./pages/buy-snack/buy-snack.vue */ 81));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _buySnack = _interopRequireDefault(__webpack_require__(/*! ./pages/buy-snack/buy-snack.vue */ 90));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_buySnack.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ }),
 
-/***/ 88:
+/***/ 9:
+/*!*****************************************************************!*\
+  !*** C:/Users/admin/Desktop/movie-app/static/font/iconfont.css ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ 97:
 /*!*******************************************************************************************!*\
   !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fbuy-ticket%2Fbuy-ticket"} ***!
   \*******************************************************************************************/
@@ -13971,38 +14905,8 @@ createPage(_buySnack.default);
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _buyTicket = _interopRequireDefault(__webpack_require__(/*! ./pages/buy-ticket/buy-ticket.vue */ 89));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _buyTicket = _interopRequireDefault(__webpack_require__(/*! ./pages/buy-ticket/buy-ticket.vue */ 98));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_buyTicket.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
-
-/***/ }),
-
-/***/ 9:
-/*!**************************************************************************!*\
-  !*** C:/Users/admin/Desktop/movie-app/static/libs/qqmap-wx-jssdk.min.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-var _createClass = function () {function a(e, c) {for (var b = 0; b < c.length; b++) {var d = c[b];d.enumerable = d.enumerable || false;d.configurable = true;if ("value" in d) {d.writable = true;}Object.defineProperty(e, d.key, d);}}return function (d, b, c) {if (b) {a(d.prototype, b);}if (c) {a(d, c);}return d;};}();function _classCallCheck(a, b) {if (!(a instanceof b)) {throw new TypeError("Cannot call a class as a function");}}var ERROR_CONF = { KEY_ERR: 311, KEY_ERR_MSG: "key格式错误", PARAM_ERR: 310, PARAM_ERR_MSG: "请求参数信息有误", SYSTEM_ERR: 600, SYSTEM_ERR_MSG: "系统错误", WX_ERR_CODE: 1000, WX_OK_CODE: 200 };var BASE_URL = "https://apis.map.qq.com/ws/";var URL_SEARCH = BASE_URL + "place/v1/search";var URL_SUGGESTION = BASE_URL + "place/v1/suggestion";var URL_GET_GEOCODER = BASE_URL + "geocoder/v1/";var URL_CITY_LIST = BASE_URL + "district/v1/list";var URL_AREA_LIST = BASE_URL + "district/v1/getchildren";var URL_DISTANCE = BASE_URL + "distance/v1/";var Utils = { location2query: function location2query(c) {if (typeof c == "string") {return c;}var b = "";for (var a = 0; a < c.length; a++) {var e = c[a];if (!!b) {b += ";";}if (e.location) {b = b + e.location.lat + "," + e.location.lng;}if (e.latitude && e.longitude) {b = b + e.latitude + "," + e.longitude;}}return b;}, getWXLocation: function getWXLocation(c, b, a) {wx.getLocation({ type: "gcj02", success: c, fail: b, complete: a });}, getLocationParam: function getLocationParam(b) {if (typeof b == "string") {var a = b.split(",");if (a.length === 2) {b = { latitude: b.split(",")[0], longitude: b.split(",")[1] };} else {b = {};}}return b;}, polyfillParam: function polyfillParam(a) {a.success = a.success || function () {};a.fail = a.fail || function () {};a.complete = a.complete || function () {};}, checkParamKeyEmpty: function checkParamKeyEmpty(c, b) {if (!c[b]) {var a = this.buildErrorConfig(ERROR_CONF.PARAM_ERR, ERROR_CONF.PARAM_ERR_MSG + b + "参数格式有误");c.fail(a);c.complete(a);return true;}return false;}, checkKeyword: function checkKeyword(a) {return !this.checkParamKeyEmpty(a, "keyword");}, checkLocation: function checkLocation(c) {var a = this.getLocationParam(c.location);if (!a || !a.latitude || !a.longitude) {var b = this.buildErrorConfig(ERROR_CONF.PARAM_ERR, ERROR_CONF.PARAM_ERR_MSG + " location参数格式有误");c.fail(b);c.complete(b);return false;}return true;}, buildErrorConfig: function buildErrorConfig(a, b) {return { status: a, message: b };}, buildWxRequestConfig: function buildWxRequestConfig(c, a) {var b = this;a.header = { "content-type": "application/json" };a.method = "GET";a.success = function (d) {var e = d.data;if (e.status === 0) {c.success(e);} else {c.fail(e);}};a.fail = function (d) {d.statusCode = ERROR_CONF.WX_ERR_CODE;c.fail(b.buildErrorConfig(ERROR_CONF.WX_ERR_CODE, result.errMsg));};a.complete = function (d) {var e = +d.statusCode;switch (e) {case ERROR_CONF.WX_ERR_CODE:c.complete(b.buildErrorConfig(ERROR_CONF.WX_ERR_CODE, d.errMsg));break;case ERROR_CONF.WX_OK_CODE:var f = d.data;if (f.status === 0) {c.complete(f);} else {c.complete(b.buildErrorConfig(f.status, f.message));}break;default:c.complete(b.buildErrorConfig(ERROR_CONF.SYSTEM_ERR, ERROR_CONF.SYSTEM_ERR_MSG));}};return a;}, locationProcess: function locationProcess(f, e, c, a) {var d = this;c = c || function (g) {g.statusCode = ERROR_CONF.WX_ERR_CODE;f.fail(d.buildErrorConfig(ERROR_CONF.WX_ERR_CODE, g.errMsg));};a = a || function (g) {if (g.statusCode == ERROR_CONF.WX_ERR_CODE) {f.complete(d.buildErrorConfig(ERROR_CONF.WX_ERR_CODE, g.errMsg));}};if (!f.location) {d.getWXLocation(e, c, a);} else {if (d.checkLocation(f)) {var b = Utils.getLocationParam(f.location);e(b);}}} };var QQMapWX = function () {function b(i) {_classCallCheck(this, b);if (!i.key) {throw Error("key值不能为空");}this.key = i.key;}_createClass(b, [{ key: "search", value: function f(i) {var l = this;i = i || {};Utils.polyfillParam(i);if (!Utils.checkKeyword(i)) {return;}var k = { keyword: i.keyword, orderby: i.orderby || "_distance", page_size: i.page_size || 10, page_index: i.page_index || 1, output: "json", key: l.key };if (i.address_format) {k.address_format = i.address_format;}if (i.filter) {k.filter = i.filter;}var n = i.distance || "1000";var j = i.auto_extend || 1;var m = function m(o) {k.boundary = "nearby(" + o.latitude + "," + o.longitude + "," + n + "," + j + ")";wx.request(Utils.buildWxRequestConfig(i, { url: URL_SEARCH, data: k }));};Utils.locationProcess(i, m);} }, { key: "getSuggestion", value: function h(i) {var k = this;i = i || {};Utils.polyfillParam(i);if (!Utils.checkKeyword(i)) {return;}var j = { keyword: i.keyword, region: i.region || "全国", region_fix: i.region_fix || 0, policy: i.policy || 0, output: "json", key: k.key };wx.request(Utils.buildWxRequestConfig(i, { url: URL_SUGGESTION, data: j }));} }, { key: "reverseGeocoder", value: function a(i) {var k = this;i = i || {};Utils.polyfillParam(i);var j = { coord_type: i.coord_type || 5, get_poi: i.get_poi || 0, output: "json", key: k.key };if (i.poi_options) {j.poi_options = i.poi_options;}var l = function l(m) {j.location = m.latitude + "," + m.longitude;wx.request(Utils.buildWxRequestConfig(i, { url: URL_GET_GEOCODER, data: j }));};Utils.locationProcess(i, l);} }, { key: "geocoder", value: function g(i) {var k = this;i = i || {};Utils.polyfillParam(i);if (Utils.checkParamKeyEmpty(i, "address")) {return;}var j = { address: i.address, output: "json", key: k.key };wx.request(Utils.buildWxRequestConfig(i, { url: URL_GET_GEOCODER, data: j }));} }, { key: "getCityList", value: function c(i) {var k = this;i = i || {};Utils.polyfillParam(i);var j = { output: "json", key: k.key };
-      wx.request(Utils.buildWxRequestConfig(i, { url: URL_CITY_LIST, data: j }));} }, { key: "getDistrictByCityId", value: function d(i) {var k = this;i = i || {};Utils.polyfillParam(i);if (Utils.checkParamKeyEmpty(i, "id")) {return;}var j = { id: i.id || "", output: "json", key: k.key };wx.request(Utils.buildWxRequestConfig(i, { url: URL_AREA_LIST, data: j }));} }, { key: "calculateDistance", value: function e(i) {var k = this;i = i || {};Utils.polyfillParam(i);if (Utils.checkParamKeyEmpty(i, "to")) {return;}var j = { mode: i.mode || "walking", to: Utils.location2query(i.to), output: "json", key: k.key };var l = function l(m) {j.from = m.latitude + "," + m.longitude;wx.request(Utils.buildWxRequestConfig(i, { url: URL_DISTANCE, data: j }));};if (i.from) {i.location = i.from;}Utils.locationProcess(i, l);} }]);return b;}();module.exports = QQMapWX;
-
-/***/ }),
-
-/***/ 96:
-/*!*************************************************************************************************!*\
-  !*** C:/Users/admin/Desktop/movie-app/main.js?{"page":"pages%2Fcinema-detail%2Fcinema-detail"} ***!
-  \*************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 4);
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _cinemaDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/cinema-detail/cinema-detail.vue */ 97));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_cinemaDetail.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
 /***/ })

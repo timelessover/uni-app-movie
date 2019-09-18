@@ -5,12 +5,17 @@
 	      <view class='movie-name'>{{order.movieName}}</view>
 	      <view class='watch-time'>{{order.time}} {{order.lang}}</view>
 	      <view>{{order.cinemaName}}</view>
-	      <view>{{order.hall}} {{order.seat}}</view>
+	      <view>{{order.hall}} </view>
+		  <view class="seats-block">
+			  <view class="item"  v-for="(seat,index) in order.seats" :key="index">
+				  {{seat.row}}排{{seat.col}}座
+			  </view>
+		  </view>
 	    </view>
 	    <view class='price-box'>
 	      <view>票价</view>
 	      <view class='server'>含服务费3元/张
-	        <text class='price-num'>{{order.price}}<text class='yuan'>元</text></text>
+	        <text class='price-num'>{{price}}<text class='yuan'>元</text></text>
 	      </view>
 	    </view>
 	  </view>
@@ -31,7 +36,7 @@
 	  </view>
 	  <view class='footer'>
 	    <view class='payment'>还需支付：
-	      <text class='price-num'>{{order.price}}<text class='yuan'>元</text></text>
+	      <text class='price-num'><text class='yuan'>{{total}}元</text></text>
 	    </view>
 	    <view class='payment-btn' @click='payment'>确认支付</view>
 	  </view>
@@ -43,12 +48,23 @@
 		data() {
 			return {
 				order:null,
-				 first:true //是否是第一次支付
+				first:true //是否是第一次支付
 			};
 		},
 		onLoad(params){
 		    const paramsObj = JSON.parse(params.paramsStr)
 		    this.initData(paramsObj)
+		},
+		computed:{
+			total(){
+				if(this.order){
+					return Number(this.order.totalPrice) + this.order.seats.length * 3
+				}
+				
+			},
+			price(){
+				return Number(this.order.price) + 3
+			}
 		},
 		methods: {
 			initData(params){
@@ -163,7 +179,7 @@
   font-size: 36rpx;
 }
 .footer .yuan{
-  font-size: 20rpx;
+  font-size: 40rpx;
 }
 .payment-btn{
   height: 2.5em;
@@ -174,5 +190,12 @@
   text-align: center;
   font-size: 34rpx;
   border-radius: 8rpx;
+}
+.seats-block{
+	display: flex;
+	.item{
+		padding-right: 10upx;
+		box-sizing: border-box;
+	}
 }
 </style>

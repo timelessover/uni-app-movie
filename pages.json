@@ -8,6 +8,12 @@
 			}
 		},
 		{
+		    "path" : "pages/seat-choose/seat-choose",
+		    "style" : {}
+		},
+
+
+		{
 		    "path" : "pages/movie-detail/movie-detail",
 			"style":{
 				"navigationBarTitleText":"影片详情"
@@ -123,6 +129,7 @@
             	"navigationBarTitleText": "注册"
             }
         }
+        
     ],
 	"tabBar": {
 		"color": "#696969",

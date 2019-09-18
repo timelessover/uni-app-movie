@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/movie/movie",
+    "pages/seat-choose/seat-choose",
     "pages/movie-detail/movie-detail",
     "pages/cinema/cinema",
     "pages/user/user",
@@ -55,6 +56,5 @@
       "desc": "授权位置"
     }
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap85.json"
+  "usingComponents": {}
 }
